@@ -30,6 +30,26 @@ class Tv extends Equatable {
   double? voteAverage;
   int? voteCount;
 
+  Tv.watchlist({
+    required this.id,
+    required this.overview,
+    required this.posterPath,
+    required this.name,
+  });
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        backdropPath,
+        firstAirDate,
+        genreIds,
+        id,
+        name,
+        originCountry,
+        originalLanguage,
+        originalName,
+        overview,
+        popularity,
+        posterPath,
+        voteAverage,
+        voteCount,
+      ];
 }
