@@ -28,19 +28,42 @@ class MovieRepositoryImpl implements MovieRepository {
       try {
         final result = await remoteDataSource.getNowPlayingMovies();
         localDataSource.cacheNowPlayingMovies(
-            result.map((movie) => MovieTable.fromDTO(movie)).toList());
-        return Right(result.map((model) => model.toEntity()).toList());
+          result
+              .map(
+                (movie) => MovieTable.fromDTO(movie),
+              )
+              .toList(),
+        );
+        return Right(
+          result
+              .map(
+                (model) => model.toEntity(),
+              )
+              .toList(),
+        );
       } on ServerException {
-        return Left(ServerFailure(''));
+        return Left(
+          ServerFailure(''),
+        );
       } on SocketException {
-        return Left(ConnectionFailure('Failed to connect to the network'));
+        return Left(
+          ConnectionFailure('Failed to connect to the network'),
+        );
       }
     } else {
       try {
         final result = await localDataSource.getCachedNowPlayingMovies();
-        return Right(result.map((model) => model.toEntity()).toList());
+        return Right(
+          result
+              .map(
+                (model) => model.toEntity(),
+              )
+              .toList(),
+        );
       } on CacheException catch (e) {
-        return Left(CacheFailure(e.message));
+        return Left(
+          CacheFailure(e.message),
+        );
       }
     }
   }
@@ -49,11 +72,17 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<Failure, MovieDetail>> getMovieDetail(int id) async {
     try {
       final result = await remoteDataSource.getMovieDetail(id);
-      return Right(result.toEntity());
+      return Right(
+        result.toEntity(),
+      );
     } on ServerException {
-      return Left(ServerFailure(''));
+      return Left(
+        ServerFailure(''),
+      );
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return Left(
+        ConnectionFailure('Failed to connect to the network'),
+      );
     }
   }
 
@@ -61,11 +90,21 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<Failure, List<Movie>>> getMovieRecommendations(int id) async {
     try {
       final result = await remoteDataSource.getMovieRecommendations(id);
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(
+        result
+            .map(
+              (model) => model.toEntity(),
+            )
+            .toList(),
+      );
     } on ServerException {
-      return Left(ServerFailure(''));
+      return Left(
+        ServerFailure(''),
+      );
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return Left(
+        ConnectionFailure('Failed to connect to the network'),
+      );
     }
   }
 
@@ -73,11 +112,21 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<Failure, List<Movie>>> getPopularMovies() async {
     try {
       final result = await remoteDataSource.getPopularMovies();
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(
+        result
+            .map(
+              (model) => model.toEntity(),
+            )
+            .toList(),
+      );
     } on ServerException {
-      return Left(ServerFailure(''));
+      return Left(
+        ServerFailure(''),
+      );
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return Left(
+        ConnectionFailure('Failed to connect to the network'),
+      );
     }
   }
 
@@ -85,11 +134,21 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<Failure, List<Movie>>> getTopRatedMovies() async {
     try {
       final result = await remoteDataSource.getTopRatedMovies();
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(
+        result
+            .map(
+              (model) => model.toEntity(),
+            )
+            .toList(),
+      );
     } on ServerException {
-      return Left(ServerFailure(''));
+      return Left(
+        ServerFailure(''),
+      );
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return Left(
+        ConnectionFailure('Failed to connect to the network'),
+      );
     }
   }
 
@@ -97,22 +156,35 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<Failure, List<Movie>>> searchMovies(String query) async {
     try {
       final result = await remoteDataSource.searchMovies(query);
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(
+        result
+            .map(
+              (model) => model.toEntity(),
+            )
+            .toList(),
+      );
     } on ServerException {
-      return Left(ServerFailure(''));
+      return Left(
+        ServerFailure(''),
+      );
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return Left(
+        ConnectionFailure('Failed to connect to the network'),
+      );
     }
   }
 
   @override
   Future<Either<Failure, String>> saveWatchlist(MovieDetail movie) async {
     try {
-      final result =
-          await localDataSource.insertWatchlist(MovieTable.fromEntity(movie));
+      final result = await localDataSource.insertWatchlist(
+        MovieTable.fromEntity(movie),
+      );
       return Right(result);
     } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.message));
+      return Left(
+        DatabaseFailure(e.message),
+      );
     } catch (e) {
       throw e;
     }
@@ -121,11 +193,14 @@ class MovieRepositoryImpl implements MovieRepository {
   @override
   Future<Either<Failure, String>> removeWatchlist(MovieDetail movie) async {
     try {
-      final result =
-          await localDataSource.removeWatchlist(MovieTable.fromEntity(movie));
+      final result = await localDataSource.removeWatchlist(
+        MovieTable.fromEntity(movie),
+      );
       return Right(result);
     } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.message));
+      return Left(
+        DatabaseFailure(e.message),
+      );
     }
   }
 
@@ -138,6 +213,12 @@ class MovieRepositoryImpl implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getWatchlistMovies() async {
     final result = await localDataSource.getWatchlistMovies();
-    return Right(result.map((data) => data.toEntity()).toList());
+    return Right(
+      result
+          .map(
+            (data) => data.toEntity(),
+          )
+          .toList(),
+    );
   }
 }

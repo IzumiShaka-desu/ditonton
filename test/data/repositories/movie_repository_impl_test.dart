@@ -123,7 +123,19 @@ void main() {
         final result = await repository.getNowPlayingMovies();
         // assert
         verify(mockRemoteDataSource.getNowPlayingMovies());
-        expect(result, equals(Left(ServerFailure(''))));
+        expect(result, equals(Left<Failure, List<Movie>>(ServerFailure(''))));
+      });
+      test('should return ConnectionFailure when socket exception', () async {
+        //arrange
+        when(mockRemoteDataSource.getNowPlayingMovies())
+            .thenThrow(SocketException(''));
+        //act
+        final result = await repository.getNowPlayingMovies();
+        //assert
+        expect(
+            result,
+            Left<Failure, List<Movie>>(
+                ConnectionFailure('Failed to connect to the network')));
       });
     });
 
