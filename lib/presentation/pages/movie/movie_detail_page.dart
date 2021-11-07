@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
+import 'package:ditonton/presentation/provider/movie/movie_detail_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/presentation/widgets/poster_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -51,7 +51,10 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               ),
             );
           } else {
-            return Text(provider.message);
+            return Tooltip(
+              message: 'error message',
+              child: Text(provider.message),
+            );
           }
         },
       ),
@@ -71,13 +74,9 @@ class DetailContent extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
-        CachedNetworkImage(
-          imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+        PosterImage(
+          url: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
           width: screenWidth,
-          placeholder: (context, url) => Center(
-            child: CircularProgressIndicator(),
-          ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
         ),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
@@ -188,57 +187,68 @@ class DetailContent extends StatelessWidget {
                             ),
                             Consumer<MovieDetailNotifier>(
                               builder: (context, data, child) {
-                                if (data.recommendationState ==
-                                    RequestState.Loading) {
-                                  return Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                } else if (data.recommendationState ==
-                                    RequestState.Error) {
-                                  return Text(data.message);
-                                } else if (data.recommendationState ==
-                                    RequestState.Loaded) {
-                                  return Container(
-                                    height: 150,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index) {
-                                        final movie = recommendations[index];
-                                        return Padding(
-                                          padding: const EdgeInsets.all(4.0),
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.pushReplacementNamed(
-                                                context,
-                                                MovieDetailPage.ROUTE_NAME,
-                                                arguments: movie.id,
-                                              );
-                                            },
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(8),
-                                              ),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                                                placeholder: (context, url) =>
-                                                    Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
+                                switch (data.recommendationState) {
+                                  case RequestState.Error:
+                                    return Tooltip(
+                                      message: 'Recommendation error',
+                                      child: Text(data.message),
+                                    );
+                                  case RequestState.Empty:
+                                    return Tooltip(
+                                      message: 'Recommendation empty',
+                                      child: SizedBox(),
+                                    );
+                                  case RequestState.Loading:
+                                    return Tooltip(
+                                      message: 'Recommendation loading',
+                                      child: Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    );
+                                  case RequestState.Loaded:
+                                    return Container(
+                                      height: 150,
+                                      child: Tooltip(
+                                        message: 'Recommendation list',
+                                        child: ListView.builder(
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index) {
+                                            final movie =
+                                                recommendations[index];
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: Tooltip(
+                                                message:
+                                                    'Recommendation item ${index + 1}',
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    Navigator
+                                                        .pushReplacementNamed(
+                                                      context,
+                                                      MovieDetailPage
+                                                          .ROUTE_NAME,
+                                                      arguments: movie.id,
+                                                    );
+                                                  },
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(8),
+                                                    ),
+                                                    child: PosterImage(
+                                                      url:
+                                                          'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                                    ),
+                                                  ),
                                                 ),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        Icon(Icons.error),
                                               ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      itemCount: recommendations.length,
-                                    ),
-                                  );
-                                } else {
-                                  return Container();
+                                            );
+                                          },
+                                          itemCount: recommendations.length,
+                                        ),
+                                      ),
+                                    );
                                 }
                               },
                             ),
