@@ -1,0 +1,108 @@
+{
+    "backdrop_path": "/oaGvjB0DvdhXhOAuADfHb261ZHa.jpg",
+    "created_by": [
+        {
+            "id": 1294471,
+            "credit_id": "61235265886348007e36f84c",
+            "name": "Hwang Dong-hyuk",
+            "gender": 2,
+            "profile_path": "/xyr3b04ayyJtA5ZN3L0Af10WKIR.jpg"
+        }
+    ],
+    "episode_run_time": [
+        54
+    ],
+    "first_air_date": "2021-09-17",
+    "genres": [
+        {
+            "id": 10759,
+            "name": "Action & Adventure"
+        },
+        {
+            "id": 9648,
+            "name": "Mystery"
+        }
+    ],
+    "homepage": "https://www.netflix.com/title/81040344",
+    "id": 93405,
+    "in_production": false,
+    "languages": [
+        "en",
+        "ar",
+        "ko"
+    ],
+    "last_air_date": "2021-09-17",
+    "last_episode_to_air": {
+        "air_date": "2021-09-17",
+        "episode_number": 9,
+        "id": 2,
+        "season_number": 1
+    },
+    "name": "Squid Game",
+    "next_episode_to_air": null,
+    "networks": [
+        {
+            "name": "Netflix",
+            "id": 213,
+            "logo_path": "/wwemzKWzjKYJFfCeiB57q3r4Bcm.png",
+            "origin_country": ""
+        }
+    ],
+    "number_of_episodes": 9,
+    "number_of_seasons": 1,
+    "origin_country": [
+        "KR"
+    ],
+    "original_language": "ko",
+    "original_name": "오징어 게임",
+    "overview": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
+    "popularity": 10283.353,
+    "poster_path": "/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+    "production_companies": [
+        {
+            "id": 112647,
+            "logo_path": null,
+            "name": "Siren Pictures",
+            "origin_country": "KR"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "KR",
+            "name": "South Korea"
+        }
+    ],
+    "seasons": [
+        {
+            "air_date": "2021-09-17",
+            "episode_count": 9,
+            "id": 131977,
+            "name": "Season 1",
+            "overview": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits — with deadly high stakes.",
+            "poster_path": "/lDm3AjG0ZsPRAz1qHD0em8pzTTp.jpg",
+            "season_number": 1
+        }
+    ],
+    "spoken_languages": [
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        },
+        {
+            "english_name": "Arabic",
+            "iso_639_1": "ar",
+            "name": "العربية"
+        },
+        {
+            "english_name": "Korean",
+            "iso_639_1": "ko",
+            "name": "한국어/조선말"
+        }
+    ],
+    "status": "Ended",
+    "tagline": "45.6 billion won is child's play.",
+    "type": "Scripted",
+    "vote_average": 7.9,
+    "vote_count": 6788
+}

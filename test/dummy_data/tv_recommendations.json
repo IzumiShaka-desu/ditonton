@@ -1,0 +1,474 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/uAWB8qOs7L6zGTwxAbeT97AsJk6.jpg",
+            "genre_ids": [
+                10765,
+                18
+            ],
+            "id": 93740,
+            "media_type": "tv",
+            "name": "Foundation",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Foundation",
+            "overview": "Follow a band of exiles on their monumental journey to save humanity and rebuild civilization amid the fall of the Galactic Empire.",
+            "popularity": 354.671,
+            "poster_path": "/A1fXGFxDifQzj08OlaGTVcnXHyd.jpg",
+            "first_air_date": "2021-09-23",
+            "vote_average": 8.221,
+            "vote_count": 170
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/bKxiLRPVWe2nZXCzt6JPr5HNWYm.jpg",
+            "genre_ids": [
+                18,
+                9648,
+                10759,
+                10765
+            ],
+            "id": 110316,
+            "media_type": "tv",
+            "name": "Alice in Borderland",
+            "origin_country": [
+                "JP"
+            ],
+            "original_language": "ja",
+            "original_name": "今際の国のアリス",
+            "overview": "With his two friends, a video-game-obsessed young man finds himself in a strange version of Tokyo where they must compete in dangerous games to win.",
+            "popularity": 447.757,
+            "poster_path": "/20mOwAAPwZ1vLQkw0fvuQHiG7bO.jpg",
+            "first_air_date": "2020-12-10",
+            "vote_average": 8.179,
+            "vote_count": 521
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/1c7zy6zUbZ2s4zFAy6CpKipQvdQ.jpg",
+            "genre_ids": [
+                35,
+                18
+            ],
+            "id": 81356,
+            "media_type": "tv",
+            "name": "Sex Education",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Sex Education",
+            "overview": "Inexperienced Otis channels his sex therapist mom when he teams up with rebellious Maeve to set up an underground sex therapy clinic at school.",
+            "popularity": 1888.571,
+            "poster_path": "/8j12tohv1NBZNmpU93f47sAKBbw.jpg",
+            "first_air_date": "2019-01-11",
+            "vote_average": 8.383,
+            "vote_count": 4814
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/7Q0diljpwSnUuHfxrZmexxztrEZ.jpg",
+            "genre_ids": [
+                16,
+                10765
+            ],
+            "id": 114478,
+            "media_type": "tv",
+            "name": "Star Wars: Visions",
+            "origin_country": [
+                "JP",
+                "US"
+            ],
+            "original_language": "ja",
+            "original_name": "スター・ウォーズ：ビジョンズ",
+            "overview": "An anthology series of animated short films celebrating Star Wars through the lens of the world's best anime creators.",
+            "popularity": 112.003,
+            "poster_path": "/8yECMpsZ8wAvra4Sow6Bz9WOO5f.jpg",
+            "first_air_date": "2021-09-22",
+            "vote_average": 8.2,
+            "vote_count": 72
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/skLnSjYriRA0RlUgwHqDtgcWghv.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 133423,
+            "media_type": "tv",
+            "name": "Rap Battlefield",
+            "origin_country": [
+                "AR"
+            ],
+            "original_language": "es",
+            "original_name": "Días de Gallos",
+            "overview": "León and Rafaela want to be a part of the competitive world of freestyling. Together, they will triumph over their competitors and overcome their own obstacles. Andy will help them navigate the social network world.",
+            "popularity": 85.067,
+            "poster_path": "/hIlMReURMhwNnlUClzaT1n8Iiss.jpg",
+            "first_air_date": "2021-09-16",
+            "vote_average": 8.591,
+            "vote_count": 44
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/A4KK6HthXvDMYRJekrM1GF6sH7y.jpg",
+            "genre_ids": [
+                10765,
+                16,
+                10751,
+                10759
+            ],
+            "id": 96659,
+            "media_type": "tv",
+            "name": "He-Man and the Masters of the Universe",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "He-Man and the Masters of the Universe",
+            "overview": "Mighty teen Adam and his heroic squad of misfits discover the legendary power of Grayskull — and their destiny to defend Eternia from sinister Skeletor.",
+            "popularity": 73.954,
+            "poster_path": "/tDMT3nTgEoaFeSLRJdt3UMreFIg.jpg",
+            "first_air_date": "2021-09-16",
+            "vote_average": 8.1,
+            "vote_count": 17
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/yfS1Mu8B0pKXwtWD9Ck9gw7L5MP.jpg",
+            "genre_ids": [
+                18,
+                10768
+            ],
+            "id": 127425,
+            "media_type": "tv",
+            "name": "Jaguar",
+            "origin_country": [
+                "ES"
+            ],
+            "original_language": "es",
+            "original_name": "Jaguar",
+            "overview": "In 1960s Spain, a Holocaust survivor joins a group of agents seeking justice against the hundreds of Nazis who fled to the nation to hide after WWII.",
+            "popularity": 187.482,
+            "poster_path": "/eYHdtR2UmKW61wk3NNUNehSRa4J.jpg",
+            "first_air_date": "2021-09-22",
+            "vote_average": 7.259,
+            "vote_count": 29
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/2dFNC3tuX88FMw4WVzLJAhooPDy.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 90239,
+            "media_type": "tv",
+            "name": "El Juego de las Llaves",
+            "origin_country": [
+                "MX",
+                "US"
+            ],
+            "original_language": "es",
+            "original_name": "El Juego de las Llaves",
+            "overview": "A casual encounter between Adriana and Sergio, two former high school friends, triggers the beginning of the game of the keys where four couples generate new sexual and emotional combinations in a dangerous and lustful game.",
+            "popularity": 1408.048,
+            "poster_path": "/2cMy9qphoOLJjYJJJQBBul0d94q.jpg",
+            "first_air_date": "2019-08-16",
+            "vote_average": 7.426,
+            "vote_count": 1325
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fIXTetAsXkPO6UUUw85IU4oactf.jpg",
+            "genre_ids": [
+                80,
+                18
+            ],
+            "id": 127865,
+            "media_type": "tv",
+            "name": "The Chestnut Man",
+            "origin_country": [
+                "DK"
+            ],
+            "original_language": "da",
+            "original_name": "Kastanjemanden",
+            "overview": "At a grisly murder scene sits a figurine made of chestnuts. From this creepy clue, two detectives hunt a killer linked to a politician's missing child.",
+            "popularity": 821.592,
+            "poster_path": "/tdLJTZJ184PsO9QkK9aPeeAXLlo.jpg",
+            "first_air_date": "2021-09-29",
+            "vote_average": 8.177,
+            "vote_count": 31
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4XbQb5YoWK9oMrlQdKwtZ1ccpC8.jpg",
+            "genre_ids": [
+                18,
+                9648
+            ],
+            "id": 97400,
+            "media_type": "tv",
+            "name": "Midnight Mass",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Midnight Mass",
+            "overview": "An unsettlling omen washes ashore in the wake of the storm. Later, when the locals gather for a potluck, tragedy strikes - and a miracle occurs.",
+            "popularity": 123.236,
+            "poster_path": "/iYoMZYVD775MtBYJfv6OGY1FsnL.jpg",
+            "first_air_date": "2021-09-24",
+            "vote_average": 7.73,
+            "vote_count": 98
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/x7XBrIWkfV0AzO6v0077ioPMR3f.jpg",
+            "genre_ids": [
+                18,
+                35,
+                9648
+            ],
+            "id": 129933,
+            "media_type": "tv",
+            "name": "Post Mortem: No One Dies in Skarnes",
+            "origin_country": [
+                "NO"
+            ],
+            "original_language": "no",
+            "original_name": "Post Mortem: Ingen dør i Skarnes",
+            "overview": "Live Hallangen is declared dead but hours later she suddenly wakes up with a sudden urge for blood. Meanwhile, her brother Odd tries to keep the family driven funeral home afloat.",
+            "popularity": 8.141,
+            "poster_path": "/pGahnC1yoYBGSXB3iDHWAT3kLlp.jpg",
+            "first_air_date": "2021-08-25",
+            "vote_average": 8.2,
+            "vote_count": 25
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/z97rfiQ57Onqng3r4NomSBJRN0H.jpg",
+            "genre_ids": [
+                10765,
+                18
+            ],
+            "id": 86550,
+            "media_type": "tv",
+            "name": "Y: The Last Man",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Y: The Last Man",
+            "overview": "Traverse a post-apocalyptic world in which a cataclysmic event decimates every mammal with a Y chromosome but for one cisgender man and his pet monkey. Follow the survivors in this new world as they struggle with their efforts to restore what was lost and the opportunity to build something better.",
+            "popularity": 357.674,
+            "poster_path": "/xcqV8XIAP6vhFFNW2ICV6a0qIJ2.jpg",
+            "first_air_date": "2021-09-13",
+            "vote_average": 7.628,
+            "vote_count": 47
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4N6zEMfZ57zNEQcM8gWeERFupMv.jpg",
+            "genre_ids": [
+                16,
+                10759,
+                10765
+            ],
+            "id": 91363,
+            "media_type": "tv",
+            "name": "What If...?",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "What If...?",
+            "overview": "Taking inspiration from the comic books of the same name, each episode explores a pivotal moment from the Marvel Cinematic Universe and turns it on its head, leading the audience into uncharted territory.",
+            "popularity": 2148.139,
+            "poster_path": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+            "first_air_date": "2021-08-11",
+            "vote_average": 8.53,
+            "vote_count": 2222
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/nNqmwYbZKIxtgJ4TztF3QAKXIzx.jpg",
+            "genre_ids": [
+                35,
+                80,
+                9648
+            ],
+            "id": 107113,
+            "media_type": "tv",
+            "name": "Only Murders in the Building",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Only Murders in the Building",
+            "overview": "Three strangers who share an obsession with true crime suddenly find themselves wrapped up in one.",
+            "popularity": 335.723,
+            "poster_path": "/lxCmHIN7TTO0sxeAmgDYxqzq8Ob.jpg",
+            "first_air_date": "2021-08-31",
+            "vote_average": 8.918,
+            "vote_count": 291
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sRCTG3J52BQeZQY35KxsJUNNblp.jpg",
+            "genre_ids": [
+                80,
+                18
+            ],
+            "id": 124271,
+            "media_type": "tv",
+            "name": "NCIS: Hawai'i",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "NCIS: Hawai'i",
+            "overview": "Jane Tennant, the first female Special Agent in Charge of NCIS Pearl Harbor, and her unwavering team of specialists balance duty to family and country while investigating high-stakes crimes involving military personnel, national security and the mysteries of the sun-drenched island paradise itself.",
+            "popularity": 308.237,
+            "poster_path": "/gFHyZQNETKFGzpSMkpD9c7IViHg.jpg",
+            "first_air_date": "2021-09-20",
+            "vote_average": 8.444,
+            "vote_count": 36
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/25yTJaPYBTPitytxvwQbSSJwSOf.jpg",
+            "genre_ids": [
+                18,
+                9648
+            ],
+            "id": 126118,
+            "media_type": "tv",
+            "name": "Chapelwaite",
+            "origin_country": [],
+            "original_language": "en",
+            "original_name": "Chapelwaite",
+            "overview": "In the 1850s, Captain Charles Boone relocates his family of three children to his ancestral home in the small, seemingly sleepy town of Preacher’s Corners, Maine after his wife dies at sea. Charles will soon have to confront the secrets of his family’s sordid history, and fight to end the darkness that has plagued the Boones for generations.",
+            "popularity": 66.55,
+            "poster_path": "/v7Oix3Zkhg3ftRxmLmyDBJc9ycp.jpg",
+            "first_air_date": "2021-08-22",
+            "vote_average": 8.22,
+            "vote_count": 41
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8kb7dmDNi8xnQ2WZhKT4W85VZIs.jpg",
+            "genre_ids": [
+                18
+            ],
+            "id": 115771,
+            "media_type": "tv",
+            "name": "We Children from Bahnhof Zoo",
+            "origin_country": [
+                "DE"
+            ],
+            "original_language": "de",
+            "original_name": "Wir Kinder vom Bahnhof Zoo",
+            "overview": "Six teenagers fight for their dream of happiness and freedom, leaving behind all the problems with parents, teachers and others. Christiane, Stella, Babsi, Benno, Axel and Michi throw themselves into the heady nights of Berlin, without limits or rules, and celebrate life, love and temptation - until they have to realize that this rush will not only destroy their friendship, but can drive them into the abyss.",
+            "popularity": 9.027,
+            "poster_path": "/i599uegofUJNvr8Ky5aNguPOhvq.jpg",
+            "first_air_date": "2021-02-19",
+            "vote_average": 6.542,
+            "vote_count": 48
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/kKlzA0owtx63wxpiYxgzSXrx6yz.jpg",
+            "genre_ids": [
+                35,
+                18
+            ],
+            "id": 79434,
+            "media_type": "tv",
+            "name": "What's Wrong with Secretary Kim",
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "김비서가 왜 그럴까",
+            "overview": "Lee Young-Joon's family runs a large company and he works as the vice-president of the company. He is smart, rich and handsome, but he is arrogant. His secretary is Kim Mi-So. She has worked for him for years and she is perfect for him, but Kim Mi-So decides to quit her job.",
+            "popularity": 20.112,
+            "poster_path": "/w6muIYgrx1XZFombs3N8owfgLwf.jpg",
+            "first_air_date": "2018-06-06",
+            "vote_average": 8.473,
+            "vote_count": 150
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/aGULNElJVpSru19WP2pUjopPX1U.jpg",
+            "genre_ids": [
+                80,
+                10766
+            ],
+            "id": 128252,
+            "media_type": "tv",
+            "name": "The Snitch Cartel: Origins",
+            "origin_country": [
+                "CO"
+            ],
+            "original_language": "es",
+            "original_name": "El cartel de los sapos: El origen",
+            "overview": "In Cali during the '60s and '70s, two brothers juggle family, romance and the joint pursuit of a burning ambition: to rule Colombia's drug industry.",
+            "popularity": 419.112,
+            "poster_path": "/A17Rt6BLHno0puR1QXbsSKhBfA4.jpg",
+            "first_air_date": "2021-07-28",
+            "vote_average": 7.9,
+            "vote_count": 166
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/vPwMa5qSyUtCTt7NOX6t5Pi2sam.jpg",
+            "genre_ids": [
+                18,
+                35
+            ],
+            "id": 114395,
+            "media_type": "tv",
+            "name": "A Love So Beautiful",
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "아름다웠던 우리에게",
+            "overview": "Love is as tough as it is sweet for a lovestruck teenager, whose relationship with her next-door neighbor transforms as they grow into adulthood.",
+            "popularity": 34.383,
+            "poster_path": "/mNFn1UcwF9ABWS5RrjoZP12z267.jpg",
+            "first_air_date": "2020-12-28",
+            "vote_average": 8.085,
+            "vote_count": 82
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/2quGobxbtKu1WywX9y90fTbxsIW.jpg",
+            "genre_ids": [
+                80,
+                9648,
+                10765
+            ],
+            "id": 117378,
+            "media_type": "tv",
+            "name": "Mouse",
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "마우스",
+            "overview": "A psychopath’s ruthless serial murders have left the entire nation gripped with fear and chaos. A honest and justice-seeking rookie police officer and a veteran detective with tragic past, face against the killer. After the encounter with the psychopath, their lives totally change.",
+            "popularity": 16.946,
+            "poster_path": "/qz0axqEwwIa5uaMsUYKGs9u29ut.jpg",
+            "first_air_date": "2021-03-03",
+            "vote_average": 8.371,
+            "vote_count": 97
+        }
+    ],
+    "total_pages": 2,
+    "total_results": 40
+}

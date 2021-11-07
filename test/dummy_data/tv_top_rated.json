@@ -1,0 +1,26 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "backdrop_path": "/esMo90QAVfOpSVTUiCuhmDTnc5y.jpg",
+            "first_air_date": "2021-07-01",
+            "genre_ids": [
+                18
+            ],
+            "id": 125910,
+            "name": "Young Royals",
+            "origin_country": [
+                "SE"
+            ],
+            "original_language": "sv",
+            "original_name": "Young Royals",
+            "overview": "Prince Wilhelm adjusts to life at his prestigious new boarding school, Hillerska, but following his heart proves more challenging than anticipated.",
+            "popularity": 56.528,
+            "poster_path": "/6CHznbr0BF78ar16zJwTVRYLLOX.jpg",
+            "vote_average": 9.2,
+            "vote_count": 458
+        }
+    ],
+    "total_pages": 104,
+    "total_results": 2064
+}
