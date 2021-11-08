@@ -1,4 +1,4 @@
-import 'package:ditonton/common/constants.dart';
+import 'package:core/utils/constants.dart';
 import 'package:ditonton/domain/entities/season.dart';
 import 'package:ditonton/presentation/widgets/poster_image.dart';
 import 'package:flutter/material.dart';
