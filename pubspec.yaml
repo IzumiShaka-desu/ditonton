@@ -29,6 +29,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^0.13.3
+  core: 
+    path: core
+  tv:
+    path: tv
+  movie:
+    path: movie
   provider: ^5.0.0
   dartz: ^0.10.0-nullsafety.2
   equatable: ^2.0.2
