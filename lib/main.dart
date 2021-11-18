@@ -1,24 +1,11 @@
-import 'package:core/utils/constants.dart';
-import 'package:ditonton/presentation/pages/home_page.dart';
-import 'package:ditonton/presentation/provider/movie/movie_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/movie_list_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
-import 'package:ditonton/routes.dart';
+import 'package:core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home/home.dart';
+import 'package:movie/movie.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
-
-import 'presentation/provider/tv/popular_tvs_notifier.dart';
-import 'presentation/provider/tv/season_detail_notifier.dart';
-import 'presentation/provider/tv/top_rated_tv_notifier.dart';
-import 'presentation/provider/tv/tv_detail_notifier.dart';
-import 'presentation/provider/tv/tv_list_notifier.dart';
-import 'presentation/provider/tv/tv_search_notifier.dart';
-import 'presentation/provider/tv/watch_list_tv_notifier.dart';
+import 'package:tv/tv.dart';
 
 void main() {
   di.init();
