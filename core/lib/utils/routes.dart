@@ -1,29 +1,28 @@
-import 'package:ditonton/domain/entities/tv_detail.dart';
-import 'package:ditonton/presentation/pages/tv/season_detail_page.dart';
-import 'package:ditonton/presentation/pages/tv/season_list_page.dart';
+import 'package:about/about.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'domain/entities/tv_detail.dart';
-import 'presentation/pages/about_page.dart';
-import 'presentation/pages/home_page.dart';
-import 'presentation/pages/movie/movie_detail_page.dart';
-import 'presentation/pages/movie/popular_movies_page.dart';
-import 'presentation/pages/movie/search_page.dart';
-import 'presentation/pages/movie/top_rated_movies_page.dart';
-import 'presentation/pages/movie/watchlist_movies_page.dart';
-import 'presentation/pages/tv/popular_tvs_page.dart';
-import 'presentation/pages/tv/search_tv_page.dart';
-import 'presentation/pages/tv/top_rated_tvs_page.dart';
-import 'presentation/pages/tv/tv_detail_page.dart';
-import 'presentation/pages/tv/watchlist_tvs_page.dart';
+import 'package:home/home.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/popular_movies_page.dart';
+import 'package:movie/presentation/pages/search_page.dart';
+import 'package:movie/presentation/pages/top_rated_movies_page.dart';
+import 'package:movie/presentation/pages/watchlist_movies_page.dart';
+import 'package:tv/domain/entities/tv_detail.dart';
+import 'package:tv/presentation/pages/popular_tvs_page.dart';
+import 'package:tv/presentation/pages/search_tv_page.dart';
+import 'package:tv/presentation/pages/season_detail_page.dart';
+import 'package:tv/presentation/pages/season_list_page.dart';
+import 'package:tv/presentation/pages/top_rated_tvs_page.dart';
+import 'package:tv/presentation/pages/tv_detail_page.dart';
+import 'package:tv/presentation/pages/watchlist_tvs_page.dart';
 
 class Routes {
+  static const defaultPage = HomePage();
   Route call(RouteSettings settings) {
     switch (settings.name) {
       case '/home':
         return MaterialPageRoute(
-          builder: (_) => HomePage(),
+          builder: (_) => defaultPage,
         );
       case PopularTvsPage.ROUTE_NAME:
         return CupertinoPageRoute(
