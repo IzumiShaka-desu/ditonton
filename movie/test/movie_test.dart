@@ -1,12 +1,17 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:core/core.dart';
+import 'package:core/utils/network_info.dart';
+import 'package:mockito/annotations.dart';
 
 import 'package:movie/movie.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
-  });
-}
+@GenerateMocks([
+  MovieRepository,
+  MovieRemoteDataSource,
+  MovieLocalDataSource,
+  DatabaseHelper,
+  NetworkInfo,
+], customMocks: [
+  MockSpec<http.Client>(as: #MockHttpClient)
+])
+void main() {}
