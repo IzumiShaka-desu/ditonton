@@ -1,4 +1,4 @@
-import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:about/about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -13,7 +13,7 @@ void main() {
     final button = find.byIcon(Icons.arrow_back);
 
     await tester.pumpWidget(
-      _makeTestableWidget(AboutPage()),
+      _makeTestableWidget(const AboutPage()),
     );
     await tester.tap(button);
     await tester.pump();
