@@ -1,15 +1,15 @@
-import 'package:ditonton/presentation/pages/movie/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/tv/home_tv_page.dart';
-import 'package:ditonton/presentation/pages/tv/search_tv_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_home_page.dart';
-import 'package:ditonton/presentation/widgets/custom_sliver_header.dart';
+import 'package:about/about.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:home/widgets/custom_sliver_header.dart';
+import 'package:movie/movie.dart';
+import 'package:movie/presentation/pages/search_page.dart';
+import 'package:tv/presentation/pages/search_tv_page.dart';
+import 'package:tv/tv.dart';
 
-import 'about_page.dart';
-import 'movie/search_page.dart';
+import 'watchlist_home_page.dart';
 
 class HomePage extends StatefulWidget {
   static String routeName = 'homepage';

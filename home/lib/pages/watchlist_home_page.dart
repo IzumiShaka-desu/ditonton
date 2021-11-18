@@ -1,6 +1,6 @@
-import 'package:ditonton/presentation/pages/movie/watchlist_movies_page.dart';
-import 'package:ditonton/presentation/pages/tv/watchlist_tvs_page.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/presentation/pages/watchlist_movies_page.dart';
+import 'package:tv/presentation/pages/watchlist_tvs_page.dart';
 
 class WathcListHomePage extends StatelessWidget {
   const WathcListHomePage({Key? key}) : super(key: key);

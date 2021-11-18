@@ -1,27 +1,15 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/home_page.dart';
-import 'package:ditonton/presentation/pages/movie/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/movie/search_page.dart';
-import 'package:ditonton/presentation/pages/tv/home_tv_page.dart';
-import 'package:ditonton/presentation/provider/movie/movie_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/movie_list_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/movie_search_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/tv/popular_tvs_notifier.dart';
-import 'package:ditonton/presentation/provider/tv/top_rated_tv_notifier.dart';
-import 'package:ditonton/presentation/provider/tv/tv_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tv/tv_list_notifier.dart';
-import 'package:ditonton/presentation/provider/tv/tv_search_notifier.dart';
-import 'package:ditonton/presentation/provider/tv/watch_list_tv_notifier.dart';
+import 'package:about/about_page.dart';
+import 'package:core/core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:home/home.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movie/movie.dart';
+import 'package:movie/presentation/pages/search_page.dart';
 import 'package:provider/provider.dart';
+import 'package:tv/tv.dart';
 
 import 'home_page_test.mocks.dart';
 
@@ -112,9 +100,9 @@ void main() {
           onGenerateRoute: (RouteSettings settings) {
             switch (settings.name) {
               case SearchPage.ROUTE_NAME:
-                return CupertinoPageRoute(builder: (_) => SearchPage());
+                return CupertinoPageRoute(builder: (_) => const SearchPage());
               case AboutPage.ROUTE_NAME:
-                return CupertinoPageRoute(builder: (_) => AboutPage());
+                return CupertinoPageRoute(builder: (_) => const AboutPage());
             }
           }),
     );
@@ -140,7 +128,7 @@ void main() {
 
     final menuTvSeries = find.byTooltip('menu Tv Series');
     await tester.pumpWidget(
-      _makeTestableWidget(HomePage()),
+      _makeTestableWidget(const HomePage()),
     );
     expect(homePage, findsOneWidget);
     expect(menuTvSeries, findsOneWidget);
