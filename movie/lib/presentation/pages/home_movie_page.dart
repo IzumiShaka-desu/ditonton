@@ -179,7 +179,7 @@ class _TopRatedMovies extends StatelessWidget {
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
 
-  MovieList(this.movies);
+  const MovieList(this.movies, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +200,7 @@ class MovieList extends StatelessWidget {
                 );
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(16),
                 ),
                 child: PosterImage(
