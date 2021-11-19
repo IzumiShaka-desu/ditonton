@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:tv/domain/entities/genre.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/domain/entities/tv_detail.dart';
 import 'package:tv/presentation/provider/tv_detail_notifier.dart';
@@ -350,7 +350,7 @@ class DetailContent extends StatelessWidget {
     );
   }
 
-  String _showGenres(List<Genre> genres) {
+  String _showGenres(List<TvGenre> genres) {
     String result = '';
     for (var genre in genres) {
       result += genre.name + ', ';
