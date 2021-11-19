@@ -20,9 +20,10 @@ class GenreModel extends Equatable {
         "name": name,
       };
 
-  Genre toEntity() {
-    return Genre(id: id, name: name);
-  }
+  Genre toEntity() => Genre(
+        id: id,
+        name: name,
+      );
 
   @override
   List<Object?> get props => [id, name];
