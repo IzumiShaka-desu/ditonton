@@ -8,7 +8,7 @@ import 'package:tv/presentation/bloc/cubit/detail_season/detail_season_cubit.dar
 import 'package:tv/tv.dart';
 
 import '../../../dummy_data/tv_dummy_objects.dart';
-import '../../providers/season_detail_notifier_test.mocks.dart';
+import 'detail_season_cubit_test.mocks.dart';
 
 @GenerateMocks([GetSeasonDetail])
 main() {
