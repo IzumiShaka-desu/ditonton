@@ -1,8 +1,6 @@
-import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tv/presentation/bloc/cubit/watchlist_tvs/watchlist_tvs_cubit.dart';
-import 'package:tv/presentation/provider/watch_list_tv_notifier.dart';
 import 'package:tv/presentation/widgets/tv_card_list.dart';
 
 class WatchlistTvsPage extends StatefulWidget {
