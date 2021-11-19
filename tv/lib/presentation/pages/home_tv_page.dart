@@ -24,6 +24,10 @@ class _HomeTvPageState extends State<HomeTvPage>
   @override
   void initState() {
     super.initState();
+    fetchTvs();
+  }
+
+  void fetchTvs() {
     Future.microtask(
       () => context.read<TvListCubit>().loadTvList(),
     );
@@ -31,34 +35,51 @@ class _HomeTvPageState extends State<HomeTvPage>
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<TvListCubit>().state;
+
     super.build(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Now Playing',
-                style: kHeading6,
+        child: state is ErrorTvListState
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("cannot establish connection"),
+                    const Icon(
+                        Icons.signal_wifi_connected_no_internet_4_outlined),
+                    TextButton(
+                      onPressed: fetchTvs,
+                      child: const Text("Retry"),
+                    )
+                  ],
+                ),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Now Playing',
+                      style: kHeading6,
+                    ),
+                    const _NowPlayingTvs(),
+                    _buildSubHeading(
+                      title: 'Popular',
+                      onTap: () => Navigator.pushNamed(
+                          context, PopularTvsPage.ROUTE_NAME),
+                    ),
+                    const _PopularTvs(),
+                    _buildSubHeading(
+                      title: 'Top Rated',
+                      onTap: () => Navigator.pushNamed(
+                          context, TopRatedTvsPage.ROUTE_NAME),
+                    ),
+                    const _TopRatedTvs(),
+                  ],
+                ),
               ),
-              const _NowPlayingTvs(),
-              _buildSubHeading(
-                title: 'Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularTvsPage.ROUTE_NAME),
-              ),
-              const _PopularTvs(),
-              _buildSubHeading(
-                title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTvsPage.ROUTE_NAME),
-              ),
-              const _TopRatedTvs(),
-            ],
-          ),
-        ),
       ),
     );
   }
