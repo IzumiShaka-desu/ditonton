@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tv/tv.dart';
 import 'package:tv/presentation/bloc/cubit/top_rated_movies/top_rated_tvs_cubit.dart';
 
-import '../../../dummy/tv_dummy_objects.dart';
+import '../../../dummy_data/tv_dummy_objects.dart';
 import 'top_rated_cubit_test.mocks.dart';
 
 @GenerateMocks([GetTopRatedTvs])

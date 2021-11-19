@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tv/tv.dart';
 import 'package:tv/presentation/bloc/cubit/popular_tvs/popular_tvs_cubit.dart';
 
-import '../../../dummy/tv_dummy_objects.dart';
+import '../../../dummy_data/tv_dummy_objects.dart';
 import 'popular_cubit_test.mocks.dart';
 
 @GenerateMocks([GetPopularTvs])

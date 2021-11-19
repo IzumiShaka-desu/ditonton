@@ -9,7 +9,7 @@ import 'package:tv/data/models/tv_table.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/tv.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 import '../../tv_test.mocks.dart';
 
 void main() {

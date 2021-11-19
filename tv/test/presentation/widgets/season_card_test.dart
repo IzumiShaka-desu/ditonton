@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:movie/presentation/widgets/poster_image.dart';
 import 'package:tv/presentation/widgets/season_card.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 
 void main() {
   Widget _makeTestableWidget(Widget body) {
@@ -13,7 +13,7 @@ void main() {
   }
 
   testWidgets('Page should display poster path', (WidgetTester tester) async {
-    final progressBarFinder = find.byType(PosterImage);
+    final progressBarFinder = find.byTooltip('poster image');
 
     await tester.pumpWidget(
       _makeTestableWidget(

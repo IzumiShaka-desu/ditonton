@@ -5,7 +5,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tv/tv.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 import 'season_detail_notifier_test.mocks.dart';
 
 @GenerateMocks([

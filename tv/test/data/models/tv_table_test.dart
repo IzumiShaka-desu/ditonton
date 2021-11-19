@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tv/domain/entities/genre.dart';
 import 'package:tv/data/models/tv_model.dart';
 import 'package:tv/data/models/tv_table.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/domain/entities/tv_detail.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 
 void main() {
   const testTable = TvTable(
@@ -30,7 +30,7 @@ void main() {
       numberOfSeasons: 1,
       firstAirDate: null,
       episodeRunTime: 43,
-      genres: [Genre(id: 1, name: '2')],
+      genres: [TvGenre(id: 1, name: '2')],
       id: 1,
       backdropPath: null,
       inProduction: false,

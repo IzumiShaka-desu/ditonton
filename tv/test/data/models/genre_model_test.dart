@@ -1,20 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie/data/models/genre_model.dart';
-import 'package:tv/domain/entities/genre.dart';
+import 'package:tv/data/models/genre_model.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 
 void main() {
+  const id = 2;
+  const name = 'nme';
   const GenreModel testModel = GenreModel(
-    id: 1,
-    name: 'name',
+    id: id,
+    name: name,
   );
   final testJsonMap = {
-    "id": 1,
-    'name': 'name',
+    "id": id,
+    'name': name,
   };
-  const testEntity = Genre(
-    id: 1,
-    name: 'name',
-  );
+  const testEntity = TvGenre(id: id, name: name);
   test('should return a valid model from JSON', () async {
     final result = GenreModel.fromJson(testJsonMap);
     expect(result, testModel);
@@ -25,6 +24,7 @@ void main() {
   });
   test('should return a valid entity', () {
     final entity = testModel.toEntity();
+
     expect(entity, testEntity);
   });
 }

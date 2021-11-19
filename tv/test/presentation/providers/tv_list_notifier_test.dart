@@ -9,7 +9,7 @@ import 'package:tv/domain/usecases/get_popular_tv.dart';
 import 'package:tv/domain/usecases/get_top_rated_tv.dart';
 import 'package:tv/presentation/provider/tv_list_notifier.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 import 'tv_list_notifier_test.mocks.dart';
 
 @GenerateMocks([GetNowPlayingTvs, GetPopularTvs, GetTopRatedTvs])

@@ -6,7 +6,7 @@ import 'package:tv/data/models/genre_model.dart';
 import 'package:tv/data/models/season_model.dart';
 import 'package:tv/data/models/tv_detail_model.dart';
 import 'package:tv/domain/entities/episode.dart';
-import 'package:tv/domain/entities/genre.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 import 'package:tv/domain/entities/season.dart';
 import 'package:tv/domain/entities/tv_detail.dart';
 
@@ -104,8 +104,8 @@ void main() {
     episodeRunTime: 54,
     firstAirDate: DateTime(2021, 09, 17),
     genres: const [
-      Genre(id: 10759, name: 'Action & Adventure'),
-      Genre(id: 9648, name: "Mystery")
+      TvGenre(id: 10759, name: 'Action & Adventure'),
+      TvGenre(id: 9648, name: "Mystery")
     ],
     id: 93405,
     inProduction: false,

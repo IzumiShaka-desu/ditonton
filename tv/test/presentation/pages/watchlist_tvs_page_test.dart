@@ -1,26 +1,40 @@
-import 'package:core/core.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
-import 'package:tv/domain/entities/tv.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:tv/presentation/bloc/cubit/watchlist_tvs/watchlist_tvs_cubit.dart';
 import 'package:tv/presentation/pages/watchlist_tvs_page.dart';
-import 'package:tv/presentation/provider/watch_list_tv_notifier.dart';
 import 'package:tv/presentation/widgets/tv_card_list.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
-import 'watchlist_tvs_page_test.mocks.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 
-@GenerateMocks([WatchlistTvNotifier])
+class MockWatchlistTvsCubit extends MockCubit<WatchlistTvsState>
+    implements WatchlistTvsCubit {}
+
+class FakeLoadingWatchlistTvsState extends Fake
+    implements LoadingWatchlistTvsState {}
+
+class FakeLoadedWatchlistTvsState extends Fake
+    implements LoadedWatchlistTvsState {}
+
+class FakeErrorWatchlistTvsState extends Fake
+    implements ErrorWatchlistTvsState {}
+
 void main() {
-  late MockWatchlistTvNotifier mockNotifier;
-  setUp(() {
-    mockNotifier = MockWatchlistTvNotifier();
+  late MockWatchlistTvsCubit mockCubit;
+  setUpAll(() {
+    registerFallbackValue(FakeLoadingWatchlistTvsState());
+    registerFallbackValue(FakeLoadedWatchlistTvsState());
+    registerFallbackValue(FakeErrorWatchlistTvsState());
   });
+  setUp(() {
+    mockCubit = MockWatchlistTvsCubit();
+  });
+
   Widget _makeTestableWidget(Widget body) {
-    return ChangeNotifierProvider<WatchlistTvNotifier>.value(
-      value: mockNotifier,
+    return BlocProvider<WatchlistTvsCubit>(
+      create: (context) => mockCubit,
       child: MaterialApp(
         home: body,
       ),
@@ -29,7 +43,12 @@ void main() {
 
   testWidgets('Page should display center progress bar when loading',
       (WidgetTester tester) async {
-    when(mockNotifier.watchlistState).thenReturn(RequestState.Loading);
+    final testData = LoadingWatchlistTvsState();
+
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadWatchlistTvs())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
 
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
@@ -42,23 +61,30 @@ void main() {
 
   testWidgets('Page should display ListView with TvCard when data is loaded',
       (WidgetTester tester) async {
-    when(mockNotifier.watchlistState).thenReturn(RequestState.Loaded);
-    when(mockNotifier.watchlistTvs).thenReturn(<Tv>[testTv]);
+    final testData = LoadedWatchlistTvsState(
+      [testTv],
+    );
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadWatchlistTvs())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
 
     final listViewFinder = find.byType(ListView);
-    final movieCardFinder = find.byType(TvCard);
+    final tvCardFinder = find.byType(TvCard);
 
     await tester.pumpWidget(_makeTestableWidget(const WatchlistTvsPage()));
 
     expect(listViewFinder, findsOneWidget);
-    expect(movieCardFinder, findsWidgets);
+    expect(tvCardFinder, findsWidgets);
   });
 
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(mockNotifier.watchlistState).thenReturn(RequestState.Error);
-    when(mockNotifier.message).thenReturn('Error message');
-
+    const testData = ErrorWatchlistTvsState('cannot connect');
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadWatchlistTvs())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
     final textFinder = find.byKey(const Key('error_message'));
 
     await tester.pumpWidget(_makeTestableWidget(const WatchlistTvsPage()));

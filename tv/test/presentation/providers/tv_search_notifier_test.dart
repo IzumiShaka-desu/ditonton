@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/tv.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 import 'tv_search_notifier_test.mocks.dart';
 
 @GenerateMocks([SearchTvs])

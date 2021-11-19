@@ -1,23 +1,34 @@
-import 'package:core/core.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
-import 'package:tv/presentation/widgets/poster_image.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:tv/presentation/bloc/cubit/tv_list/tv_list_cubit.dart';
 import 'package:tv/tv.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
-import 'home_tv_page_test.mocks.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
+
+class MockTvListCubit extends MockCubit<TvListState> implements TvListCubit {}
+
+class FakeLoadingTvListState extends Fake implements LoadingTvListState {}
+
+class FakeLoadedTvListState extends Fake implements LoadedTvListState {}
+
+class FakeErrorTvListState extends Fake implements ErrorTvListState {}
 
 main() {
-  late MockTvListNotifier mockNotifier;
+  late TvListCubit mockCubit;
+  setUpAll(() {
+    registerFallbackValue(FakeLoadingTvListState());
+    registerFallbackValue(FakeLoadedTvListState());
+    registerFallbackValue(FakeErrorTvListState());
+  });
   setUp(() {
-    mockNotifier = MockTvListNotifier();
+    mockCubit = MockTvListCubit();
   });
   Widget _makeTestableWidget(Widget body) {
-    return ChangeNotifierProvider<TvListNotifier>.value(
-      value: mockNotifier,
+    return BlocProvider<TvListCubit>(
+      create: (context) => mockCubit,
       child: MaterialApp(
         home: body,
         onGenerateRoute: (settings) => MaterialPageRoute(
@@ -28,123 +39,131 @@ main() {
   }
 
   group('verify tap behaviour', () {
-    _pumpWidget(tester) async {
-      when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Loaded);
-      when(mockNotifier.nowPlayingTvs).thenAnswer((_) => [testTv]);
+    setUp(() {
+      final testData = LoadedTvListState(
+        nowPlaying: [testTv],
+        topRated: [testTv],
+        popular: [testTv],
+      );
+      when(() => mockCubit.state).thenAnswer((_) => testData);
+      when(() => mockCubit.loadTvList())
+          .thenAnswer((invocation) async => invocation);
+      whenListen(mockCubit, Stream.fromIterable([testData]));
+    });
+    testWidgets('navigate to popular', (widgetTester) async {
+      await widgetTester.pumpWidget(_makeTestableWidget(HomeTvPage()));
 
-      when(mockNotifier.popularTvsState)
-          .thenAnswer((_) => RequestState.Loading);
-
-      when(mockNotifier.topRatedTvsState)
-          .thenAnswer((_) => RequestState.Loading);
-
-      await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
-    }
-
-    testWidgets('navigate to popular ', (tester) async {
-      await _pumpWidget(tester);
       var popular = find.byTooltip("navigate to Popular");
       expect(popular, findsOneWidget);
-      await tester.tap(popular);
-      await tester.pump();
+      await widgetTester.tap(popular);
+      await widgetTester.pump();
     });
     testWidgets('navigate to top rated ', (tester) async {
-      await _pumpWidget(tester);
+      await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
+
       var topRated = find.byTooltip("navigate to Top Rated");
       expect(topRated, findsOneWidget);
       await tester.tap(topRated);
       await tester.pump();
     });
     testWidgets('itemlist ', (tester) async {
-      await _pumpWidget(tester);
+      await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
+
       var itemList = find.byType(ClipRRect);
 
-      expect(itemList, findsOneWidget);
-      await tester.tap(itemList);
+      expect(itemList, findsWidgets);
+      await tester.tap(itemList.first);
       await tester.pump();
     });
   });
-  testWidgets(
-      'should display text failed when now playing section state is empty or error',
-      (tester) async {
-    when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Error);
-    when(mockNotifier.popularTvsState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.topRatedTvsState).thenAnswer((_) => RequestState.Loading);
-    var findCircularProgress = find.byType(CircularProgressIndicator);
+  group('now playing not loaded', () {
+    final testData = LoadedTvListState(
+      popular: [testTv],
+      nowPlaying: const [],
+      topRated: [testTv],
+    );
+    setUp(() {
+      when(() => mockCubit.state).thenAnswer((_) => testData);
+      when(() => mockCubit.loadTvList())
+          .thenAnswer((invocation) async => invocation);
+      whenListen(mockCubit, Stream.fromIterable([testData]));
+    });
+    testWidgets(
+        'should display text failed when now playing section state is empty or error',
+        (tester) async {
+      var findCircularProgress = find.byType(CircularProgressIndicator);
 
-    var textFailedFinder = find.byTooltip('failed to load tvs');
-    await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
-    expect(findCircularProgress, findsWidgets);
-    expect(textFailedFinder, findsOneWidget);
+      var textFailedFinder = find.byTooltip('failed to load tvs');
+      await tester.pumpWidget(_makeTestableWidget(const HomeTvPage()));
+      expect(findCircularProgress, findsWidgets);
+      expect(textFailedFinder, findsOneWidget);
+    });
   });
-  testWidgets(
-      'should display text failed when popular section state is empty or error',
-      (tester) async {
-    when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.popularTvsState).thenAnswer((_) => RequestState.Error);
-    when(mockNotifier.topRatedTvsState).thenAnswer((_) => RequestState.Loading);
+  group('popular not loaded', () {
+    final testData = LoadedTvListState(
+      popular: const [],
+      nowPlaying: [testTv],
+      topRated: [testTv],
+    );
+    setUp(() {
+      when(() => mockCubit.state).thenAnswer((_) => testData);
+      when(() => mockCubit.loadTvList())
+          .thenAnswer((invocation) async => invocation);
+      whenListen(mockCubit, Stream.fromIterable([testData]));
+    });
+    testWidgets(
+        'should display text failed when popular section state is empty or error',
+        (tester) async {
+      var findCircularProgress = find.byType(CircularProgressIndicator);
 
-    var textFailedFinder = find.byTooltip('failed to load tvs');
-    var findCircularProgress = find.byType(CircularProgressIndicator);
-
-    await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
-    expect(findCircularProgress, findsWidgets);
-    expect(textFailedFinder, findsOneWidget);
+      var textFailedFinder = find.byTooltip('failed to load tvs');
+      await tester.pumpWidget(_makeTestableWidget(const HomeTvPage()));
+      expect(findCircularProgress, findsWidgets);
+      expect(textFailedFinder, findsOneWidget);
+    });
   });
-  testWidgets(
-      'should display text failed when top rated section state is empty or error',
-      (tester) async {
-    when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.popularTvsState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.topRatedTvsState).thenAnswer((_) => RequestState.Error);
-    var findCircularProgress = find.byType(CircularProgressIndicator);
-    var textFailedFinder = find.byTooltip('failed to load tvs');
-    await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
-    expect(textFailedFinder, findsOneWidget);
-    expect(findCircularProgress, findsWidgets);
+  group('top rated not loaded', () {
+    final testData = LoadedTvListState(
+      popular: [testTv],
+      nowPlaying: [testTv],
+      topRated: const [],
+    );
+    setUp(() {
+      when(() => mockCubit.state).thenAnswer((_) => testData);
+      when(() => mockCubit.loadTvList())
+          .thenAnswer((invocation) async => invocation);
+      whenListen(mockCubit, Stream.fromIterable([testData]));
+    });
+    testWidgets(
+        'should display text failed when top rated section state is empty or error',
+        (tester) async {
+      var findCircularProgress = find.byType(CircularProgressIndicator);
+
+      var textFailedFinder = find.byTooltip('failed to load tvs');
+      await tester.pumpWidget(_makeTestableWidget(const HomeTvPage()));
+      expect(findCircularProgress, findsWidgets);
+      expect(textFailedFinder, findsOneWidget);
+    });
   });
-  testWidgets('should display tv when now playing section state is loaded',
-      (tester) async {
-    when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Loaded);
-    when(mockNotifier.nowPlayingTvs).thenAnswer((_) => [testTv]);
-    when(mockNotifier.popularTvsState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.topRatedTvsState).thenAnswer((_) => RequestState.Loading);
-    var findCircularProgress = find.byType(CircularProgressIndicator);
-
-    var posterImageFinder = find.byType(PosterImage);
-    await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
-    expect(findCircularProgress, findsWidgets);
-    expect(posterImageFinder, findsOneWidget);
-  });
-  testWidgets('should tv card failed when popular section state is loaded',
-      (tester) async {
-    when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.popularTvsState).thenAnswer((_) => RequestState.Loaded);
-    when(mockNotifier.popularTvs).thenAnswer((_) => [testTv]);
-
-    when(mockNotifier.topRatedTvsState).thenAnswer((_) => RequestState.Loading);
-
-    var posterImageFinder = find.byType(PosterImage);
-
-    var findCircularProgress = find.byType(CircularProgressIndicator);
-
-    await tester.pumpWidget(_makeTestableWidget(const HomeTvPage()));
-    expect(findCircularProgress, findsWidgets);
-    expect(posterImageFinder, findsOneWidget);
-  });
-  testWidgets('should display tv card when top rated section state is loaded',
-      (tester) async {
-    when(mockNotifier.nowPlayingState).thenAnswer((_) => RequestState.Loading);
-
-    when(mockNotifier.popularTvsState).thenAnswer((_) => RequestState.Loading);
-    when(mockNotifier.topRatedTvsState).thenAnswer((_) => RequestState.Loaded);
-    when(mockNotifier.topRatedTvs).thenAnswer((_) => [testTv]);
-
-    var findCircularProgress = find.byType(CircularProgressIndicator);
-    var posterImageFinder = find.byType(PosterImage);
-
-    await tester.pumpWidget(_makeTestableWidget(HomeTvPage()));
-    expect(posterImageFinder, findsOneWidget);
-    expect(findCircularProgress, findsWidgets);
+  group('error fetching all category', () {
+    const testData = ErrorTvListState('cannot establish connection');
+    setUp(() {
+      when(() => mockCubit.state).thenAnswer((_) => testData);
+      when(() => mockCubit.loadTvList())
+          .thenAnswer((invocation) async => invocation);
+      whenListen(mockCubit, Stream.fromIterable([testData]));
+    });
+    testWidgets(
+        'should display text failed when top rated section state is empty or error',
+        (tester) async {
+      var textFailedFinder = find.text('cannot establish connection');
+      var retryButton = find.text('Retry');
+      await tester.pumpWidget(_makeTestableWidget(const HomeTvPage()));
+      expect(textFailedFinder, findsOneWidget);
+      expect(retryButton, findsOneWidget);
+      await tester.tap(retryButton);
+      await tester.pumpAndSettle();
+      verify(mockCubit.loadTvList);
+    });
   });
 }

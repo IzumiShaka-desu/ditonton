@@ -51,11 +51,11 @@ class MockGetTvDetail extends _i1.Mock implements _i4.GetTvDetail {
   String toString() => super.toString();
 }
 
-/// A class which mocks [SaveWatchlist].
+/// A class which mocks [SaveTvWatchlist].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSaveWatchlist extends _i1.Mock implements _i8.SaveTvWatchlist {
-  MockSaveWatchlist() {
+class MockSaveTvWatchlist extends _i1.Mock implements _i8.SaveTvWatchlist {
+  MockSaveTvWatchlist() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -118,12 +118,12 @@ class MockGetTvRecommendations extends _i1.Mock
   String toString() => super.toString();
 }
 
-/// A class which mocks [GetWatchListStatus].
+/// A class which mocks [GetTvWatchListStatus].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetWatchListStatus extends _i1.Mock
+class MockGetTvWatchListStatus extends _i1.Mock
     implements _i12.GetTvWatchListStatus {
-  MockGetWatchListStatus() {
+  MockGetTvWatchListStatus() {
     _i1.throwOnMissingStub(this);
   }
 

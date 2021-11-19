@@ -6,7 +6,7 @@ import 'package:tv/data/models/tv_detail_model.dart';
 import 'package:tv/data/models/tv_model.dart';
 import 'package:tv/data/models/tv_table.dart';
 import 'package:tv/domain/entities/episode.dart';
-import 'package:tv/domain/entities/genre.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 import 'package:tv/domain/entities/season.dart';
 import 'package:tv/domain/entities/season_detail.dart';
 import 'package:tv/domain/entities/tv.dart';
@@ -14,7 +14,7 @@ import 'package:tv/domain/entities/tv_detail.dart';
 
 final now = DateTime.now();
 
-var testGendre = const Genre(id: 1, name: 'action');
+var testGendre = const TvGenre(id: 1, name: 'action');
 var testGendreModel = const GenreModel(id: 1, name: 'action');
 var testSeasonModel = const SeasonModel(
     airDate: null,
@@ -175,7 +175,6 @@ const testTvTable = TvTable(
 );
 final testTv = Tv(
   id: 1,
-  genreIds: List.generate(2, (index) => 2),
   name: 'nama',
   originalLanguage: 'en',
   originCountry: const ['eng'],

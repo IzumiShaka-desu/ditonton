@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tv/presentation/bloc/bloc/search_movies/search_tvs_bloc.dart';
 import 'package:tv/tv.dart';
 
-import '../../../dummy/tv_dummy_objects.dart';
+import '../../../dummy_data/tv_dummy_objects.dart';
 import 'search_tvs_bloc_test.mocks.dart';
 
 @GenerateMocks([SearchTvs])

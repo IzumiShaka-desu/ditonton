@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tv/tv.dart';
 import 'package:tv/presentation/bloc/cubit/detail_tv/detail_tv_cubit.dart';
 
-import '../../../dummy/tv_dummy_objects.dart';
+import '../../../dummy_data/tv_dummy_objects.dart';
 import 'detail_cubit_test.mocks.dart';
 
 @GenerateMocks([
@@ -21,16 +21,16 @@ main() {
   late DetailTvCubit cubit;
   late MockGetTvDetail getTvDetail;
   late MockGetTvRecommendations getTvRecommendations;
-  late MockGetWatchListStatus getWatchListStatus;
+  late MockGetTvWatchListStatus getWatchListStatus;
   late MockRemoveTvWatchlist removeWatchlist;
-  late MockSaveWatchlist saveWatchlist;
+  late MockSaveTvWatchlist saveWatchlist;
   setUp(() {
     getTvDetail = MockGetTvDetail();
     getTvDetail = MockGetTvDetail();
     getTvRecommendations = MockGetTvRecommendations();
-    getWatchListStatus = MockGetWatchListStatus();
+    getWatchListStatus = MockGetTvWatchListStatus();
     removeWatchlist = MockRemoveTvWatchlist();
-    saveWatchlist = MockSaveWatchlist();
+    saveWatchlist = MockSaveTvWatchlist();
     cubit = DetailTvCubit(
       getTvDetail: getTvDetail,
       getTvRecommendations: getTvRecommendations,

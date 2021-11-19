@@ -9,7 +9,7 @@ import 'package:tv/presentation/pages/tv_detail_page.dart';
 import 'package:tv/presentation/widgets/poster_image.dart';
 import 'package:tv/tv.dart';
 
-import '../../dummy/tv_dummy_objects.dart';
+import '../../dummy_data/tv_dummy_objects.dart';
 import 'tv_detail_page_test.mocks.dart';
 
 @GenerateMocks([TvDetailNotifier])
