@@ -1,18 +1,12 @@
+import 'package:core/core.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/get_movie_detail.dart';
-import 'package:ditonton/domain/usecases/movie/get_movie_recommendations.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/domain/usecases/movie/get_watchlist_status.dart';
-import 'package:ditonton/domain/usecases/movie/remove_watchlist.dart';
-import 'package:ditonton/domain/usecases/movie/save_watchlist.dart';
-import 'package:ditonton/presentation/provider/movie/movie_detail_notifier.dart';
-import 'package:ditonton/common/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movie/domain/entities/movie.dart';
+import 'package:movie/movie.dart';
 
-import '../../../dummy_data/dummy_objects.dart';
+import '../../dummy/dummy_objects.dart';
 import 'movie_detail_notifier_test.mocks.dart';
 
 @GenerateMocks([

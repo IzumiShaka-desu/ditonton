@@ -6,7 +6,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movie/presentation/bloc/bloc/search_movies/search_movies_bloc.dart';
 import 'package:movie/presentation/pages/search_page.dart';
 import 'package:movie/presentation/widgets/movie_card_list.dart';
-import 'package:provider/provider.dart';
 
 import '../../dummy/dummy_objects.dart';
 

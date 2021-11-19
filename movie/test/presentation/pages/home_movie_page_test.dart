@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie/movie.dart';
 import 'package:movie/presentation/bloc/cubit/movie_list/movie_list_cubit.dart';
-import 'package:movie/presentation/widgets/poster_image.dart';
 
 import '../../dummy/dummy_objects.dart';
 
@@ -40,18 +39,6 @@ main() {
     );
   }
 
-  // testWidgets('description', (widgetTester) async {
-  //   final testData = LoadedMovieListState(
-  //     nowPlaying: [testMovie],
-  //     topRated: [testMovie],
-  //     popular: [testMovie],
-  //   );
-  //   when(() => mockCubit.state).thenAnswer((_) => testData);
-  //   when(() => mockCubit.loadMovieList())
-  //       .thenAnswer((invocation) async => invocation);
-  //   whenListen(mockCubit, Stream.fromIterable([testData]));
-  //   await widgetTester.pumpWidget(_makeTestableWidget(HomeMoviePage()));
-  // });
   group('verify tap behaviour', () {
     setUp(() {
       final testData = LoadedMovieListState(
@@ -231,89 +218,4 @@ main() {
       verify(mockCubit.loadMovieList);
     });
   });
-  // testWidgets(
-  //     'should display text failed when popular section state is empty or error',
-  //     (tester) async {
-  //   when(() => mockCubit.state).thenAnswer(
-  //     (_) => LoadedMovieListState(
-  //       nowPlaying: [testMovie],
-  //       popular: const [],
-  //       topRated: [testMovie],
-  //     ),
-  //   );
-
-  //   var textFailedFinder = find.byTooltip('failed to load movies');
-  //   var findCircularProgress = find.byType(CircularProgressIndicator);
-
-  //   await tester.pumpWidget(_makeTestableWidget(const HomeMoviePage()));
-  //   expect(findCircularProgress, findsWidgets);
-  //   expect(textFailedFinder, findsOneWidget);
-  // });
-  // testWidgets(
-  //     'should display text failed when top rated section state is empty or error',
-  //     (tester) async {
-  //   when(() => mockCubit.state).thenAnswer(
-  //     (_) => LoadedMovieListState(
-  //       nowPlaying: [testMovie],
-  //       topRated: const [],
-  //       popular: [testMovie],
-  //     ),
-  //   );
-  //   var findCircularProgress = find.byType(CircularProgressIndicator);
-  //   var textFailedFinder = find.byTooltip('failed to load movies');
-  //   await tester.pumpWidget(_makeTestableWidget(const HomeMoviePage()));
-  //   expect(textFailedFinder, findsOneWidget);
-  //   expect(findCircularProgress, findsWidgets);
-  // });
-  // testWidgets('should display movie when now playing section state is loaded',
-  //     (tester) async {
-  //   when(() => mockCubit.state).thenAnswer(
-  //     (_) => LoadedMovieListState(
-  //       nowPlaying: [testMovie],
-  //       popular: const [],
-  //       topRated: const [],
-  //     ),
-  //   );
-  //   var findCircularProgress = find.byType(CircularProgressIndicator);
-
-  //   var posterImageFinder = find.byType(PosterImage);
-  //   await tester.pumpWidget(_makeTestableWidget(const HomeMoviePage()));
-  //   expect(findCircularProgress, findsWidgets);
-  //   expect(posterImageFinder, findsOneWidget);
-  // });
-  // testWidgets('should movie card failed when popular section state is loaded',
-  //     (tester) async {
-  //   when(() => mockCubit.state).thenAnswer(
-  //     (_) => LoadedMovieListState(
-  //       nowPlaying: const [],
-  //       popular: [testMovie],
-  //       topRated: const [],
-  //     ),
-  //   );
-  //   var posterImageFinder = find.byType(PosterImage);
-
-  //   var findCircularProgress = find.byType(CircularProgressIndicator);
-
-  //   await tester.pumpWidget(_makeTestableWidget(const HomeMoviePage()));
-  //   expect(findCircularProgress, findsWidgets);
-  //   expect(posterImageFinder, findsOneWidget);
-  // });
-  // testWidgets(
-  //     'should display movie card when top rated section state is loaded',
-  //     (tester) async {
-  //   when(() => mockCubit.state).thenAnswer(
-  //     (_) => LoadedMovieListState(
-  //       nowPlaying: const [],
-  //       popular: const [],
-  //       topRated: [testMovie],
-  //     ),
-  //   );
-
-  //   var findCircularProgress = find.byType(CircularProgressIndicator);
-  //   var posterImageFinder = find.byType(PosterImage);
-
-  //   await tester.pumpWidget(_makeTestableWidget(HomeMoviePage()));
-  //   expect(posterImageFinder, findsOneWidget);
-  //   expect(findCircularProgress, findsWidgets);
-  // });
 }

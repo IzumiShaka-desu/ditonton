@@ -1,14 +1,13 @@
+import 'package:core/core.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
-import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movie/domain/entities/movie.dart';
+import 'package:movie/domain/usecases/get_top_rated_movies.dart';
+import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
 
-import 'top_rated_movies_notifier_test.mocks.dart';
+import '../bloc/cubit/top_rated_cubit_test.mocks.dart';
 
 @GenerateMocks([GetTopRatedMovies])
 void main() {
@@ -28,7 +27,7 @@ void main() {
   final tMovie = Movie(
     adult: false,
     backdropPath: 'backdropPath',
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     id: 1,
     originalTitle: 'originalTitle',
     overview: 'overview',
