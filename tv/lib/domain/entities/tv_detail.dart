@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:tv/domain/entities/season.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 
 import 'episode.dart';
-import 'genre.dart';
 
 class TvDetail extends Equatable {
   const TvDetail({
@@ -30,7 +30,7 @@ class TvDetail extends Equatable {
   final int? numberOfSeasons;
   final DateTime? firstAirDate;
   final int? episodeRunTime;
-  final List<Genre> genres;
+  final List<TvGenre> genres;
   final int id;
   final String? backdropPath;
   final bool inProduction;

@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'episode.dart';
 
 class SeasonDetail extends Equatable {
-  SeasonDetail({
+  const SeasonDetail({
     required this.id,
     required this.airDate,
     this.episodes = const [],
