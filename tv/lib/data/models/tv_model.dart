@@ -51,7 +51,6 @@ class TvModel extends Equatable {
         id: id,
         backdropPath: backdropPath,
         firstAirDate: DateTime.tryParse(firstAirDate ?? ''),
-        genreIds: genreIds,
         name: name,
         originCountry: originCountry,
         originalLanguage: originalLanguage,

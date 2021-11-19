@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie/domain/entities/genre.dart';
+import 'package:tv/domain/entities/tv_genre.dart';
 
 class GenreModel extends Equatable {
   const GenreModel({
@@ -20,9 +20,7 @@ class GenreModel extends Equatable {
         "name": name,
       };
 
-  Genre toEntity() {
-    return Genre(id: id, name: name);
-  }
+  TvGenre toEntity() => TvGenre(id: id, name: name);
 
   @override
   List<Object?> get props => [id, name];

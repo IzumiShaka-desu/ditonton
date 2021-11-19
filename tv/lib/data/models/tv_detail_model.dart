@@ -1,10 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:tv/domain/entities/genre.dart';
+import 'package:tv/data/models/episode_model.dart';
+import 'package:tv/data/models/genre_model.dart';
+import 'package:tv/data/models/season_model.dart';
 import 'package:tv/domain/entities/tv_detail.dart';
-
-import 'episode_model.dart';
-import 'genre_model.dart';
-import 'season_model.dart';
 
 class TvDetailModel extends Equatable {
   const TvDetailModel({
@@ -136,25 +134,30 @@ class TvDetailModel extends Equatable {
         lastEpisodeToAir,
       ];
 
-  TvDetail toEntity() => TvDetail(
-      numberOfEpisodes: numberOfEpisodes,
-      numberOfSeasons: numberOfSeasons,
-      firstAirDate: firstAirDate,
-      episodeRunTime: (episodeRunTime..sort()).last,
-      genres:
-          (genres ?? []).map((e) => e.toEntity()).whereType<Genre>().toList(),
-      id: id!,
-      backdropPath: backdropPath,
-      inProduction: inProduction!,
-      lastAirDate: lastAirDate,
-      seasons: seasons?.map((e) => e.toEntity()).toList() ?? [],
-      originalName: originalName,
-      overview: '$overview',
-      popularity: popularity,
-      posterPath: posterPath!,
-      voteAverage: voteAverage,
-      voteCount: voteCount,
-      status: status,
-      name: name,
-      lastEpisodeToAir: lastEpisodeToAir?.toEntity());
+  TvDetail toEntity() {
+    var list = List.from(episodeRunTime);
+    list.sort();
+    final genreEntities = (genres ?? []).map((e) => e.toEntity()).toList();
+
+    return TvDetail(
+        numberOfEpisodes: numberOfEpisodes,
+        numberOfSeasons: numberOfSeasons,
+        firstAirDate: firstAirDate,
+        episodeRunTime: list.last,
+        genres: genreEntities,
+        id: id!,
+        backdropPath: backdropPath,
+        inProduction: inProduction!,
+        lastAirDate: lastAirDate,
+        seasons: seasons?.map((e) => e.toEntity()).toList() ?? [],
+        originalName: originalName,
+        overview: '$overview',
+        popularity: popularity,
+        posterPath: posterPath!,
+        voteAverage: voteAverage,
+        voteCount: voteCount,
+        status: status,
+        name: name,
+        lastEpisodeToAir: lastEpisodeToAir?.toEntity());
+  }
 }
