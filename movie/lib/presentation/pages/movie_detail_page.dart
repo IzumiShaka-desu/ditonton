@@ -47,7 +47,6 @@ class _BodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<DetailMoviesCubit>().state;
-    if (state is LoadingDetailMoviesState) {}
     if (state is LoadedWithRecommendationListDetailMoviesState) {
       return SafeArea(
         child: DetailContent(
