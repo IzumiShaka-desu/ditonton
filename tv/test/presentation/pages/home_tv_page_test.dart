@@ -10,7 +10,6 @@ import 'package:tv/tv.dart';
 import '../../dummy/tv_dummy_objects.dart';
 import 'home_tv_page_test.mocks.dart';
 
-@GenerateMocks([TvListNotifier])
 main() {
   late MockTvListNotifier mockNotifier;
   setUp(() {
