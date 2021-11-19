@@ -21,3 +21,4 @@ export 'package:movie/presentation/provider/movie_search_notifier.dart';
 export 'package:movie/presentation/provider/popular_movies_notifier.dart';
 export 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
 export 'package:movie/presentation/provider/watchlist_movie_notifier.dart';
+export 'package:movie/domain/entities/genre.dart' hide Genre;
