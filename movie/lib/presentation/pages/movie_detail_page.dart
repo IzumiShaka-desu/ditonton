@@ -6,7 +6,6 @@ import 'package:movie/domain/entities/genre.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:movie/domain/entities/movie_detail.dart';
 import 'package:movie/presentation/bloc/cubit/detail_movies/detail_movies_cubit.dart';
-import 'package:movie/presentation/provider/movie_detail_notifier.dart';
 import 'package:movie/presentation/widgets/poster_image.dart';
 import 'package:provider/provider.dart';
 
@@ -151,10 +150,10 @@ class DetailContent extends StatelessWidget {
                                     context.read<DetailMoviesCubit>().message;
 
                                 if (message ==
-                                        MovieDetailNotifier
+                                        DetailMoviesCubit
                                             .watchlistAddSuccessMessage ||
                                     message ==
-                                        MovieDetailNotifier
+                                        DetailMoviesCubit
                                             .watchlistRemoveSuccessMessage) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(content: Text(message)));

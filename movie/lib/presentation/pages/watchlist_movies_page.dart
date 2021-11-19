@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie/presentation/bloc/cubit/watchlist_movies/watchlist_movies_cubit.dart';
-import 'package:movie/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:movie/presentation/widgets/movie_card_list.dart';
 import 'package:provider/provider.dart';
 

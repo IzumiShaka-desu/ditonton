@@ -1,7 +1,5 @@
-import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:movie/presentation/bloc/cubit/top_rated_movies/top_rated_movies_cubit.dart';
-import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:movie/presentation/widgets/movie_card_list.dart';
 import 'package:provider/provider.dart';
 
