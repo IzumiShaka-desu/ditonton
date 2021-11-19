@@ -14,18 +14,22 @@ dependencies:
     path: ../core
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.0
   flutter_rating_bar: ^4.0.0
   http: ^0.13.3
   movie:
     path: ../movie
   provider: ^6.0.1
+  rxdart: ^0.27.2
 
 dev_dependencies:
+  bloc_test: ^9.0.0
   build_runner: ^2.1.2
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
   mockito: ^5.0.16
+  mocktail: ^0.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
