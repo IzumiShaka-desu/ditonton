@@ -27,9 +27,12 @@ class SeasonCard extends StatelessWidget {
             children: [
               Expanded(
                 flex: 1,
-                child: PosterImage(
-                  url: 'https://image.tmdb.org/t/p/w500${season.posterPath}',
-                  width: screenWidth,
+                child: Tooltip(
+                  message: 'poster image',
+                  child: PosterImage(
+                    url: 'https://image.tmdb.org/t/p/w500${season.posterPath}',
+                    width: screenWidth,
+                  ),
                 ),
               ),
               Expanded(
