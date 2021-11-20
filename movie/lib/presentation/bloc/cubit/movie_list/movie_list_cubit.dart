@@ -6,7 +6,6 @@ import 'package:equatable/equatable.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:movie/domain/usecases/get_popular_movies.dart';
 import 'package:movie/domain/usecases/get_top_rated_movies.dart';
-import 'package:movie/presentation/bloc/cubit/top_rated_movies/top_rated_movies_cubit.dart';
 part 'movie_list_state.dart';
 
 class MovieListCubit extends Cubit<MovieListState> {
