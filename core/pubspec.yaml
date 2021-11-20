@@ -11,6 +11,7 @@ environment:
 dependencies:
   about:
     path: ../about
+  firebase_analytics: ^9.0.0-dev.3
   data_connection_checker:
     git:
       url: https://github.com/chornthorn/data_connection_checker.git

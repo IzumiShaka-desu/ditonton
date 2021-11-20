@@ -1,4 +1,5 @@
 import 'package:about/about.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home.dart';
@@ -19,6 +20,7 @@ import 'package:tv/presentation/pages/watchlist_tvs_page.dart';
 class Routes {
   static const defaultPage = HomePage();
   Route call(RouteSettings settings) {
+    FirebaseAnalytics.instance.logScreenView(screenName: settings.name);
     switch (settings.name) {
       case '/home':
         return MaterialPageRoute(
