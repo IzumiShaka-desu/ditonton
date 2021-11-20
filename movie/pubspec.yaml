@@ -19,6 +19,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   flutter_rating_bar: ^4.0.0
   http: ^0.13.3
+  firebase_analytics: ^9.0.0-dev.3
   rxdart: ^0.27.2
   tv:
     path: ../tv
