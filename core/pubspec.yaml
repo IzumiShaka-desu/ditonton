@@ -8,23 +8,24 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
-dependencies: 
+dependencies:
+  about:
+    path: ../about
+  data_connection_checker:
+    git:
+      url: https://github.com/chornthorn/data_connection_checker.git
+      ref: master
   flutter:
     sdk: flutter
   google_fonts: ^2.1.0
+  home:
+    path: ../home
+  http: ^0.13.3
   movie:
     path: ../movie
   sqflite: ^2.0.0+4
   tv:
     path: ../tv
-  about:
-    path: ../about
-  home:
-    path: ../home
-  data_connection_checker:
-    git:
-      url: https://github.com/chornthorn/data_connection_checker.git
-      ref: master
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -35,11 +36,13 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
-flutter: null
+flutter: 
 
 # To add assets to your package, add an assets section, like this:
-# assets:
-#   - images/a_dot_burr.jpeg
+  assets:
+    - certificates/certificate.pem
+  # - images/a_dot_burr.jpeg
+
 #   - images/a_dot_ham.jpeg
 #
 # For details regarding assets in packages, see
