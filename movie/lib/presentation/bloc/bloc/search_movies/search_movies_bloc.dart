@@ -13,7 +13,6 @@ class SearchMoviesBloc extends Bloc<SearchMoviesEvent, SearchMoviesState> {
     on<OnQueryChanged>(
       (event, emit) async {
         final query = event.query;
-        FirebaseAnalytics.instance.logSearch(searchTerm: query);
         emit(LoadingSearchMoviesState());
         final result = await _searchMovies.execute(query);
         result.fold(

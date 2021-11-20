@@ -13,7 +13,6 @@ class SearchTvsBloc extends Bloc<SearchTvsEvent, SearchTvsState> {
     on<OnQueryChanged>(
       (event, emit) async {
         final query = event.query;
-        FirebaseAnalytics.instance.logSearch(searchTerm: query);
         emit(LoadingSearchTvsState());
         final result = await _searchTvs.execute(query);
         result.fold(
