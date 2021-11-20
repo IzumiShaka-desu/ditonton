@@ -32,6 +32,19 @@ class LoadedWithRecommendationListDetailTvsState extends DetailTvsState {
         isAddedtoWatchlistTvs,
         recommendationTvs,
       ];
+
+  @override
+  LoadedWithRecommendationListDetailTvsState copyWith({
+    TvDetail? tvDetail,
+    bool? isAddedtoWatchlistTvs,
+    List<Tv>? recommendationTvs,
+  }) {
+    return LoadedWithRecommendationListDetailTvsState(
+      tvDetail ?? this.tvDetail,
+      isAddedtoWatchlistTvs ?? this.isAddedtoWatchlistTvs,
+      recommendationTvs ?? this.recommendationTvs,
+    );
+  }
 }
 
 class LoadedWithRecommendationErrorDetailTvsState extends DetailTvsState {
@@ -49,4 +62,17 @@ class LoadedWithRecommendationErrorDetailTvsState extends DetailTvsState {
         isAddedtoWatchlistTvs,
         recommendationError,
       ];
+
+  @override
+  LoadedWithRecommendationErrorDetailTvsState copyWith({
+    TvDetail? tvDetail,
+    bool? isAddedtoWatchlistTvs,
+    String? recommendationError,
+  }) {
+    return LoadedWithRecommendationErrorDetailTvsState(
+      tvDetail ?? this.tvDetail,
+      isAddedtoWatchlistTvs ?? this.isAddedtoWatchlistTvs,
+      recommendationError ?? this.recommendationError,
+    );
+  }
 }

@@ -22,11 +22,11 @@ class DetailTvCubit extends Cubit<DetailTvsState> {
   String _message = '';
   String get message => _message;
   DetailTvCubit({
-    required getTvRecommendations,
-    required getWatchListStatus,
-    required saveWatchlist,
-    required removeWatchlist,
-    required getTvDetail,
+    required GetTvRecommendations getTvRecommendations,
+    required GetTvWatchListStatus getWatchListStatus,
+    required SaveTvWatchlist saveWatchlist,
+    required RemoveTvWatchlist removeWatchlist,
+    required GetTvDetail getTvDetail,
   })  : _saveWatchlist = saveWatchlist,
         _removeWatchlist = removeWatchlist,
         _getTvDetail = getTvDetail,
@@ -71,7 +71,24 @@ class DetailTvCubit extends Cubit<DetailTvsState> {
       final result = await _removeWatchlist.execute(tv);
       result.fold(
         (fail) async => _message = fail.message,
-        (result) async => _message = watchlistRemoveSuccessMessage,
+        (result) async {
+          if (state is LoadedWithRecommendationErrorDetailTvsState) {
+            final isAddedToWatchlist = await _getWatchListStatus.execute(tv.id);
+
+            final newState =
+                (state as LoadedWithRecommendationErrorDetailTvsState)
+                    .copyWith(isAddedtoWatchlistTvs: isAddedToWatchlist);
+            emit(newState);
+          }
+          if (state is LoadedWithRecommendationListDetailTvsState) {
+            final isAddedToWatchlist = await _getWatchListStatus.execute(tv.id);
+
+            final newState =
+                (state as LoadedWithRecommendationListDetailTvsState)
+                    .copyWith(isAddedtoWatchlistTvs: isAddedToWatchlist);
+            emit(newState);
+          }
+        },
       );
     } catch (e) {
       _message = "Failed";
@@ -81,10 +98,27 @@ class DetailTvCubit extends Cubit<DetailTvsState> {
   Future<void> addWatchlist(TvDetail tv) async {
     try {
       final result = await _saveWatchlist.execute(tv);
-      print(result);
       result.fold(
         (fail) async => _message = fail.message,
-        (result) async => _message = watchlistAddSuccessMessage,
+        (result) async {
+          _message = watchlistAddSuccessMessage;
+          if (state is LoadedWithRecommendationErrorDetailTvsState) {
+            final isAddedToWatchlist = await _getWatchListStatus.execute(tv.id);
+
+            final newState =
+                (state as LoadedWithRecommendationErrorDetailTvsState)
+                    .copyWith(isAddedtoWatchlistTvs: isAddedToWatchlist);
+            emit(newState);
+          }
+          if (state is LoadedWithRecommendationListDetailTvsState) {
+            final isAddedToWatchlist = await _getWatchListStatus.execute(tv.id);
+
+            final newState =
+                (state as LoadedWithRecommendationListDetailTvsState)
+                    .copyWith(isAddedtoWatchlistTvs: isAddedToWatchlist);
+            emit(newState);
+          }
+        },
       );
     } catch (e) {
       _message = "Failed";
