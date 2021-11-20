@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie/presentation/widgets/poster_image.dart';
 import 'package:tv/presentation/widgets/season_card.dart';
 
 import '../../dummy_data/tv_dummy_objects.dart';

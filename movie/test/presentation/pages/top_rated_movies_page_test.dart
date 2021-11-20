@@ -6,7 +6,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:movie/presentation/bloc/cubit/top_rated_movies/top_rated_movies_cubit.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:movie/presentation/widgets/movie_card_list.dart';
-import 'package:provider/provider.dart';
 
 import '../../dummy/dummy_objects.dart';
 
