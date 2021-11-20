@@ -45,7 +45,6 @@ dependencies:
   movie:
     path: movie
   path_provider: ^2.0.2
-  provider: ^6.0.1
   sqflite: ^2.0.0+3
   tv:
     path: tv
