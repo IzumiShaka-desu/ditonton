@@ -28,9 +28,9 @@ class _HomePageState extends State<HomePage> {
   late final PageController _pageController;
 
   final _views = [
-    HomeMoviePage(),
-    HomeTvPage(),
-    WathcListHomePage(),
+    const HomeMoviePage(),
+    const HomeTvPage(),
+    const WathcListHomePage(),
   ];
   double get _currentOffset {
     var distances = ((_currentPosition + 1) * ((_currentPosition + 1) * 0.8));
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       endDrawer: Drawer(
         child: Column(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/circle-g.png'),
               ),
@@ -60,8 +60,8 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
               },
-              leading: Icon(Icons.info_outline),
-              title: Text('About'),
+              leading: const Icon(Icons.info_outline),
+              title: const Text('About'),
             ),
           ],
         ),
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   message: 'open drawer menu',
                   child: InkWell(
                     onTap: () => Scaffold.of(context).openEndDrawer(),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       backgroundImage: AssetImage('assets/circle-g.png'),
                     ),
                   ),
@@ -103,11 +103,11 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Theme.of(context).primaryColor.withOpacity(0.7),
               leading: AnimatedOpacity(
                 opacity: _currentMenu.isEmpty ? 0 : 1,
-                duration: Duration(milliseconds: 350),
+                duration: const Duration(milliseconds: 350),
                 child: _currentMenu.isEmpty
-                    ? SizedBox()
+                    ? const SizedBox()
                     : IconButton(
-                        icon: Icon(Icons.chevron_left),
+                        icon: const Icon(Icons.chevron_left),
                         onPressed: () => setState(() {
                           _currentMenu = '';
                         }),
@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                   title: _animatedMenuBuilder(),
                   actions: [
                     AnimatedOpacity(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       opacity: ['', _menu.last].contains(_currentMenu) ? 0 : 1,
                       child: IconButton(
                         onPressed: () {
@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                 : SearchTvPage.ROUTE_NAME,
                           );
                         },
-                        icon: Icon(Icons.search),
+                        icon: const Icon(Icons.search),
                       ),
                     )
                   ],
@@ -148,11 +148,11 @@ class _HomePageState extends State<HomePage> {
               return AnimatedOpacity(
                 opacity: [index, -1].contains(_currentPosition) ? 1 : 0,
                 curve: Curves.fastOutSlowIn,
-                duration: Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 200),
                 child: AnimatedSlide(
                   offset: Offset(
                       0, [index, -1].contains(_currentPosition) ? 0 : -1),
-                  duration: Duration(milliseconds: 250),
+                  duration: const Duration(milliseconds: 250),
                   curve: Curves.fastOutSlowIn,
                   child: _views.elementAt(index),
                 ),
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
             },
             scrollDirection: Axis.vertical,
             dragStartBehavior: DragStartBehavior.down,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: _pageController,
             itemCount: _views.length,
           ),
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
           .map(
             (e) => AnimatedOpacity(
               opacity: _currentMenu == e || _currentMenu.isEmpty ? 1 : 0,
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Tooltip(
@@ -198,8 +198,8 @@ class _HomePageState extends State<HomePage> {
                       offset:
                           Offset(_currentMenu.isEmpty ? 0 : _currentOffset, 0),
                       curve: Curves.fastOutSlowIn,
-                      duration: Duration(milliseconds: 350),
-                      child: Text('$e'),
+                      duration: const Duration(milliseconds: 350),
+                      child: Text(e),
                     ),
                   ),
                 ),

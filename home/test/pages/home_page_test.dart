@@ -1,99 +1,99 @@
 import 'package:about/about_page.dart';
-import 'package:core/core.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:home/home.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:movie/domain/entities/movie.dart';
 import 'package:movie/movie.dart';
+import 'package:movie/presentation/bloc/bloc/search_movies/search_movies_bloc.dart'
+    as m;
+import 'package:movie/presentation/bloc/cubit/movie_list/movie_list_cubit.dart';
 import 'package:movie/presentation/pages/search_page.dart';
-import 'package:provider/provider.dart';
+import 'package:tv/domain/entities/tv.dart';
+import 'package:tv/presentation/bloc/bloc/search_movies/search_tvs_bloc.dart';
+import 'package:tv/presentation/bloc/cubit/tv_list/tv_list_cubit.dart';
 import 'package:tv/tv.dart';
 
-import 'home_page_test.mocks.dart';
+class MockSearchTvsBloc extends MockBloc<SearchTvsEvent, SearchTvsState>
+    implements SearchTvsBloc {}
 
-@GenerateMocks([
-  MovieListNotifier,
-  MovieDetailNotifier,
-  MovieSearchNotifier,
-  TopRatedMoviesNotifier,
-  PopularMoviesNotifier,
-  WatchlistMovieNotifier,
-  TvListNotifier,
-  TvDetailNotifier,
-  TvSearchNotifier,
-  TopRatedTvsNotifier,
-  PopularTvsNotifier,
-  WatchlistTvNotifier
-])
-void main() {
-  late MovieListNotifier mockMovieListNotifier;
-  late MovieDetailNotifier mockMovieDetailNotifier;
-  late MovieSearchNotifier mockSearchNotifier;
-  late TopRatedMoviesNotifier mockTopRatedMoviesNotifier;
-  late PopularMoviesNotifier mockPopularMoviesNotifier;
-  late WatchlistMovieNotifier mockWatchListMovieNotifier;
-  late TvListNotifier mockTvListNotifier;
-  late TvDetailNotifier mockDetailNotifier;
-  late TvSearchNotifier mockTvSearchNotifier;
-  late TopRatedTvsNotifier mockTopRatedTvsNotifier;
-  late PopularTvsNotifier mockPopularTvsNotifier;
-  late WatchlistTvNotifier mockWatchlistTvNotifier;
+class FakeLoadingSearchTvsState extends Fake implements LoadingSearchTvsState {}
 
+class FakeLoadedSearchTvsState extends Fake implements LoadedSearchTvsState {}
+
+class FakeErrorSearchTvsState extends Fake implements ErrorSearchTvsState {}
+
+class FakeOnQueryChanged extends Fake implements OnQueryChanged {}
+
+class MockMovieListCubit extends MockCubit<MovieListState>
+    implements MovieListCubit {}
+
+class FakeLoadingMovieListState extends Fake implements LoadingMovieListState {}
+
+class FakeLoadedMovieListState extends Fake implements LoadedMovieListState {}
+
+class FakeErrorMovieListState extends Fake implements ErrorMovieListState {}
+
+class MockTvListCubit extends MockCubit<TvListState> implements TvListCubit {}
+
+class FakeLoadingTvListState extends Fake implements LoadingTvListState {}
+
+class FakeLoadedTvListState extends Fake implements LoadedTvListState {}
+
+class FakeErrorTvListState extends Fake implements ErrorTvListState {}
+
+class MockSearchMoviesBloc
+    extends MockBloc<m.SearchMoviesEvent, m.SearchMoviesState>
+    implements m.SearchMoviesBloc {}
+
+class FakeLoadingSearchMoviesState extends Fake
+    implements m.LoadingSearchMoviesState {}
+
+class FakeLoadedSearchMoviesState extends Fake
+    implements m.LoadedSearchMoviesState {}
+
+class FakeErrorSearchMoviesState extends Fake
+    implements m.ErrorSearchMoviesState {}
+
+class FakeOnQueryMChanged extends Fake implements m.OnQueryChanged {}
+
+main() {
+  late TvListCubit mockTvCubit;
+  late MovieListCubit mockCubit;
+  late SearchTvsBloc searchTvsBloc;
+  late m.SearchMoviesBloc searchMoviesBloc;
+  setUpAll(() {
+    registerFallbackValue(FakeLoadingSearchMoviesState());
+    registerFallbackValue(FakeLoadedSearchMoviesState());
+    registerFallbackValue(FakeErrorSearchMoviesState());
+    registerFallbackValue(FakeOnQueryMChanged());
+    registerFallbackValue(FakeLoadingSearchTvsState());
+    registerFallbackValue(FakeLoadedSearchTvsState());
+    registerFallbackValue(FakeErrorSearchTvsState());
+    registerFallbackValue(FakeOnQueryChanged());
+    registerFallbackValue(FakeLoadingTvListState());
+    registerFallbackValue(FakeLoadedTvListState());
+    registerFallbackValue(FakeErrorTvListState());
+    registerFallbackValue(FakeLoadingMovieListState());
+    registerFallbackValue(FakeLoadedMovieListState());
+    registerFallbackValue(FakeErrorMovieListState());
+  });
   setUp(() {
-    mockMovieListNotifier = MockMovieListNotifier();
-    mockMovieDetailNotifier = MockMovieDetailNotifier();
-    mockSearchNotifier = MockMovieSearchNotifier();
-    mockTopRatedMoviesNotifier = MockTopRatedMoviesNotifier();
-    mockPopularMoviesNotifier = MockPopularMoviesNotifier();
-    mockWatchListMovieNotifier = MockWatchlistMovieNotifier();
-    mockTvListNotifier = MockTvListNotifier();
-    mockDetailNotifier = MockTvDetailNotifier();
-    mockTvSearchNotifier = MockTvSearchNotifier();
-    mockTopRatedTvsNotifier = MockTopRatedTvsNotifier();
-    mockPopularTvsNotifier = MockPopularTvsNotifier();
-    mockWatchlistTvNotifier = MockWatchlistTvNotifier();
+    mockTvCubit = MockTvListCubit();
+    mockCubit = MockMovieListCubit();
+    searchTvsBloc = MockSearchTvsBloc();
+    searchMoviesBloc = MockSearchMoviesBloc();
   });
   Widget _makeTestableWidget(Widget body) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => mockPopularMoviesNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockTopRatedMoviesNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockSearchNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockMovieListNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockMovieDetailNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockWatchListMovieNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockTvListNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockDetailNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockTvSearchNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockTopRatedTvsNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockPopularTvsNotifier,
-        ),
-        ChangeNotifierProvider(
-          create: (_) => mockWatchlistTvNotifier,
-        ),
+        BlocProvider<MovieListCubit>(create: (ctx) => mockCubit),
+        BlocProvider<TvListCubit>(create: (ctx) => mockTvCubit),
+        BlocProvider<SearchTvsBloc>(create: (ctx) => searchTvsBloc),
+        BlocProvider<m.SearchMoviesBloc>(create: (ctx) => searchMoviesBloc),
       ],
       child: MaterialApp(
           home: body,
@@ -108,22 +108,65 @@ void main() {
     );
   }
 
+  final now = DateTime.now();
+  final testTv = Tv(
+    id: 1,
+    name: 'nama',
+    originalLanguage: 'en',
+    originCountry: const ['eng'],
+    originalName: 'name',
+    firstAirDate: now,
+    popularity: 3.0,
+    overview: 'overview',
+    backdropPath: '',
+    posterPath: '',
+    voteAverage: 3.0,
+    voteCount: 1000,
+  );
+
+  final testMovie = Movie(
+    adult: false,
+    backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
+    genreIds: [14, 28],
+    id: 557,
+    originalTitle: 'Spider-Man',
+    overview:
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+    popularity: 60.441,
+    posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
+    releaseDate: '2002-05-01',
+    title: 'Spider-Man',
+    video: false,
+    voteAverage: 7.2,
+    voteCount: 13507,
+  );
+
   testWidgets('Page should display tv home page and go to search',
       (WidgetTester tester) async {
-    when(mockMovieListNotifier.nowPlayingState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockMovieListNotifier.topRatedMoviesState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockMovieListNotifier.popularMoviesState)
-        .thenAnswer((_) => RequestState.Loading);
+    final testDataTv = LoadedTvListState(
+      nowPlaying: [testTv],
+      topRated: [testTv],
+      popular: [testTv],
+    );
+    final testDataSearch = m.InitialSearchMoviesState();
 
-    when(mockTvListNotifier.nowPlayingState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockTvListNotifier.topRatedTvsState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockTvListNotifier.popularTvsState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockSearchNotifier.state).thenAnswer((_) => RequestState.Loading);
+    when(() => searchMoviesBloc.state).thenAnswer((_) => testDataSearch);
+    // when(() => mockBloc.)
+    //     .thenAnswer((invocation) async => invocation);
+    whenListen(searchMoviesBloc, Stream.fromIterable([testDataSearch]));
+    when(() => mockTvCubit.state).thenAnswer((_) => testDataTv);
+    when(() => mockTvCubit.loadTvList())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testDataTv]));
+    final testData = LoadedMovieListState(
+      nowPlaying: [testMovie],
+      topRated: [testMovie],
+      popular: [testMovie],
+    );
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadMovieList())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
     final homePage = find.byType(HomeMoviePage);
 
     final menuTvSeries = find.byTooltip('menu Tv Series');
@@ -151,55 +194,62 @@ void main() {
     await tester.pump();
   });
 
-  testWidgets('Page should display tv home page and go to search',
+  testWidgets('Page should display tv home page and open drawer',
       (WidgetTester tester) async {
-    when(mockMovieListNotifier.nowPlayingState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockMovieListNotifier.topRatedMoviesState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockMovieListNotifier.popularMoviesState)
-        .thenAnswer((_) => RequestState.Loading);
-
-    when(mockTvListNotifier.nowPlayingState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockTvListNotifier.topRatedTvsState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockTvListNotifier.popularTvsState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockSearchNotifier.state).thenAnswer((_) => RequestState.Loading);
-
+    final testDataTv = LoadedTvListState(
+      nowPlaying: [testTv],
+      topRated: [testTv],
+      popular: [testTv],
+    );
+    when(() => mockTvCubit.state).thenAnswer((_) => testDataTv);
+    when(() => mockTvCubit.loadTvList())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testDataTv]));
+    final testData = LoadedMovieListState(
+      nowPlaying: [testMovie],
+      topRated: [testMovie],
+      popular: [testMovie],
+    );
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadMovieList())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
     final finder = find.byTooltip('open drawer menu');
     await tester.pumpWidget(
-      _makeTestableWidget(HomePage()),
+      _makeTestableWidget(const HomePage()),
     );
     await tester.tap(finder);
     await tester.pump();
   });
   testWidgets('test open drawer', (WidgetTester tester) async {
-    when(mockMovieListNotifier.nowPlayingState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockMovieListNotifier.topRatedMoviesState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockMovieListNotifier.popularMoviesState)
-        .thenAnswer((_) => RequestState.Loading);
-
-    when(mockTvListNotifier.nowPlayingState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockTvListNotifier.topRatedTvsState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockTvListNotifier.popularTvsState)
-        .thenAnswer((_) => RequestState.Loading);
-    when(mockSearchNotifier.state).thenAnswer((_) => RequestState.Loading);
+    final testDataTv = LoadedTvListState(
+      nowPlaying: [testTv],
+      topRated: [testTv],
+      popular: [testTv],
+    );
+    when(() => mockTvCubit.state).thenAnswer((_) => testDataTv);
+    when(() => mockTvCubit.loadTvList())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testDataTv]));
+    final testData = LoadedMovieListState(
+      nowPlaying: [testMovie],
+      topRated: [testMovie],
+      popular: [testMovie],
+    );
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadMovieList())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
 
     final finder = find.byTooltip('open drawer menu');
     await tester.pumpWidget(
-      _makeTestableWidget(HomePage()),
+      _makeTestableWidget(const HomePage()),
     );
     await tester.tap(finder);
-    await tester.pump(Duration(seconds: 1));
+    await tester.pump(const Duration(seconds: 1));
     await tester.dragFrom(
-        tester.getTopRight(find.byType(Scaffold).first), Offset(-300, 0));
-    await tester.pump(Duration(seconds: 1));
+        tester.getTopRight(find.byType(Scaffold).first), const Offset(-300, 0));
+    await tester.pump(const Duration(seconds: 1));
 
     final aboutMenu = find.widgetWithText(ListTile, "About");
     expect(aboutMenu, findsOneWidget);
