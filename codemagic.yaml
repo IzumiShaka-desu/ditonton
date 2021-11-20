@@ -22,5 +22,7 @@ workflows:
       # - flutter test core --coverage
       # - flutter test movie --coverage
       # - flutter test tv --coverage
+      - flutter drive \ --driver=test_driver/integration_test_driver.dart \ --target=integration_test/tv_test.dart  
+      - flutter drive \ --driver=test_driver/integration_test_driver.dart \ --target=integration_test/movie_test.dart  
     artifacts:
       - coverage/lcov.info
