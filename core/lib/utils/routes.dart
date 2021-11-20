@@ -26,19 +26,19 @@ class Routes {
         );
       case PopularTvsPage.ROUTE_NAME:
         return CupertinoPageRoute(
-          builder: (_) => PopularTvsPage(),
+          builder: (_) => const PopularTvsPage(),
         );
       case TopRatedTvsPage.ROUTE_NAME:
         return CupertinoPageRoute(
-          builder: (_) => TopRatedTvsPage(),
+          builder: (_) => const TopRatedTvsPage(),
         );
       case PopularMoviesPage.ROUTE_NAME:
         return CupertinoPageRoute(
-          builder: (_) => PopularMoviesPage(),
+          builder: (_) => const PopularMoviesPage(),
         );
       case TopRatedMoviesPage.ROUTE_NAME:
         return CupertinoPageRoute(
-          builder: (_) => TopRatedMoviesPage(),
+          builder: (_) => const TopRatedMoviesPage(),
         );
       case MovieDetailPage.ROUTE_NAME:
         final id = settings.arguments as int;
@@ -65,19 +65,19 @@ class Routes {
         );
       case SearchPage.ROUTE_NAME:
         return CupertinoPageRoute(
-          builder: (_) => SearchPage(),
+          builder: (_) => const SearchPage(),
         );
       case SearchTvPage.ROUTE_NAME:
         return CupertinoPageRoute(
-          builder: (_) => SearchTvPage(),
+          builder: (_) => const SearchTvPage(),
         );
       case WatchlistTvsPage.ROUTE_NAME:
         return MaterialPageRoute(
-          builder: (_) => WatchlistTvsPage(),
+          builder: (_) => const WatchlistTvsPage(),
         );
       case WatchlistMoviesPage.ROUTE_NAME:
         return MaterialPageRoute(
-          builder: (_) => WatchlistMoviesPage(),
+          builder: (_) => const WatchlistMoviesPage(),
         );
       case SeasonListPage.ROUTE_NAME:
         final tv = settings.arguments as TvDetail;
@@ -90,12 +90,12 @@ class Routes {
 
       case AboutPage.ROUTE_NAME:
         return MaterialPageRoute(
-          builder: (_) => AboutPage(),
+          builder: (_) => const AboutPage(),
         );
       default:
         return MaterialPageRoute(
           builder: (_) {
-            return Scaffold(
+            return const Scaffold(
               body: Center(
                 child: Text('Page not found :('),
               ),
