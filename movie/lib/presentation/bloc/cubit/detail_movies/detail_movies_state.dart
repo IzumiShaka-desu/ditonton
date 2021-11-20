@@ -32,6 +32,18 @@ class LoadedWithRecommendationListDetailMoviesState extends DetailMoviesState {
         isAddedtoWatchlistMovies,
         recommendationMovies,
       ];
+
+  LoadedWithRecommendationListDetailMoviesState copyWith({
+    MovieDetail? movieDetail,
+    bool? isAddedtoWatchlistMovies,
+    List<Movie>? recommendationMovies,
+  }) {
+    return LoadedWithRecommendationListDetailMoviesState(
+      movieDetail ?? this.movieDetail,
+      isAddedtoWatchlistMovies ?? this.isAddedtoWatchlistMovies,
+      recommendationMovies ?? this.recommendationMovies,
+    );
+  }
 }
 
 class LoadedWithRecommendationErrorDetailMoviesState extends DetailMoviesState {
@@ -49,4 +61,16 @@ class LoadedWithRecommendationErrorDetailMoviesState extends DetailMoviesState {
         isAddedtoWatchlistMovies,
         recommendationError,
       ];
+
+  LoadedWithRecommendationErrorDetailMoviesState copyWith({
+    MovieDetail? movieDetail,
+    bool? isAddedtoWatchlistMovies,
+    String? recommendationError,
+  }) {
+    return LoadedWithRecommendationErrorDetailMoviesState(
+      movieDetail ?? this.movieDetail,
+      isAddedtoWatchlistMovies ?? this.isAddedtoWatchlistMovies,
+      recommendationError ?? this.recommendationError,
+    );
+  }
 }

@@ -71,7 +71,26 @@ class DetailMoviesCubit extends Cubit<DetailMoviesState> {
       final result = await _removeWatchlist.execute(movie);
       result.fold(
         (fail) async => _message = fail.message,
-        (result) async => _message = watchlistRemoveSuccessMessage,
+        (result) async {
+          if (state is LoadedWithRecommendationErrorDetailMoviesState) {
+            final isAddedToWatchlist =
+                await _getWatchListStatus.execute(movie.id);
+
+            final newState =
+                (state as LoadedWithRecommendationErrorDetailMoviesState)
+                    .copyWith(isAddedtoWatchlistMovies: isAddedToWatchlist);
+            emit(newState);
+          }
+          if (state is LoadedWithRecommendationListDetailMoviesState) {
+            final isAddedToWatchlist =
+                await _getWatchListStatus.execute(movie.id);
+
+            final newState =
+                (state as LoadedWithRecommendationListDetailMoviesState)
+                    .copyWith(isAddedtoWatchlistMovies: isAddedToWatchlist);
+            emit(newState);
+          }
+        },
       );
     } catch (e) {
       _message = "Failed";
@@ -81,10 +100,29 @@ class DetailMoviesCubit extends Cubit<DetailMoviesState> {
   Future<void> addWatchlist(MovieDetail movie) async {
     try {
       final result = await _saveWatchlist.execute(movie);
-      print(result);
       result.fold(
         (fail) async => _message = fail.message,
-        (result) async => _message = watchlistAddSuccessMessage,
+        (result) async {
+          _message = watchlistAddSuccessMessage;
+          if (state is LoadedWithRecommendationErrorDetailMoviesState) {
+            final isAddedToWatchlist =
+                await _getWatchListStatus.execute(movie.id);
+
+            final newState =
+                (state as LoadedWithRecommendationErrorDetailMoviesState)
+                    .copyWith(isAddedtoWatchlistMovies: isAddedToWatchlist);
+            emit(newState);
+          }
+          if (state is LoadedWithRecommendationListDetailMoviesState) {
+            final isAddedToWatchlist =
+                await _getWatchListStatus.execute(movie.id);
+
+            final newState =
+                (state as LoadedWithRecommendationListDetailMoviesState)
+                    .copyWith(isAddedtoWatchlistMovies: isAddedToWatchlist);
+            emit(newState);
+          }
+        },
       );
     } catch (e) {
       _message = "Failed";
