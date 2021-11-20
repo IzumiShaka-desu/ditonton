@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rxdart/rxdart.dart';
@@ -12,6 +13,7 @@ class SearchTvsBloc extends Bloc<SearchTvsEvent, SearchTvsState> {
     on<OnQueryChanged>(
       (event, emit) async {
         final query = event.query;
+        FirebaseAnalytics.instance.logSearch(searchTerm: query);
         emit(LoadingSearchTvsState());
         final result = await _searchTvs.execute(query);
         result.fold(

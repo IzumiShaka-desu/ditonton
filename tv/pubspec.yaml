@@ -14,6 +14,7 @@ dependencies:
     path: ../core
   flutter:
     sdk: flutter
+  firebase_analytics: ^9.0.0-dev.3
   flutter_bloc: ^8.0.0
   flutter_rating_bar: ^4.0.0
   http: ^0.13.3
