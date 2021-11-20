@@ -1,0 +1,28 @@
+workflows:
+  default-workflow:
+    name: Default Workflow
+    environment:
+      flutter: stable
+    cache:
+      cache_paths:
+        - $FCI_BUILD_DIR/build
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: "*"
+          include: true
+          source: true
+    scripts:
+      - flutter packages pub get
+      - flutter test about core home movie tv --coverage
+      # - flutter test about --coverage
+      # - flutter test home --coverage
+      # - flutter test core --coverage
+      # - flutter test movie --coverage
+      # - flutter test tv --coverage
+      # - flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/tv_test.dart  
+      # - flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/movie_test.dart  
+    artifacts:
+      - coverage/lcov.info
