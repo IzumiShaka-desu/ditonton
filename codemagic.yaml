@@ -16,6 +16,11 @@ workflows:
           source: true
     scripts:
       - flutter packages pub get
-      - flutter test about core home movie tv --coverage
+      # - flutter test about core home movie tv --coverage
+      - flutter test about --coverage
+      - flutter test home --coverage
+      - flutter test core --coverage
+      - flutter test movie --coverage
+      - flutter test tv --coverage
     artifacts:
       - coverage/lcov.info
