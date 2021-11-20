@@ -6,5 +6,5 @@ String readJson(String name) {
   // if (dir.endsWith('/test')) {
   //   dir = dir.replaceAll('/test', '');
   // }
-  return File('${dir[0]}\\test\\$name').readAsStringSync();
+  return File('${dir[0]}/test/$name').readAsStringSync();
 }
