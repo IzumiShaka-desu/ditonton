@@ -5,6 +5,7 @@
 ![analytics](screenshots/analytics.png)
 ![crashlytics](screenshots/crashlitics.png)
 ![codemagic](screenshots/build_codemagic.png)
+![codemagic2](screenshots/codemagic2.png)
 ![all test passed >_<](screenshots/all_test_passed.png)
 
 ##### integration test
