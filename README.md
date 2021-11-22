@@ -5,6 +5,8 @@
 ![analytics](screenshots/analytics.png)
 ![crashlytics](screenshots/crashlitics.png)
 ![codemagic](screenshots/build_codemagic.png)
+![all test passed >_<](screenshots/all_test_passed.png)
+
 ##### integration test
  - movie : "flutter drive --driver=test_driver integration_test_driver.dart --target=integration_test/movie_test.dart"  
  - tv : "flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/tv_test.dart"
