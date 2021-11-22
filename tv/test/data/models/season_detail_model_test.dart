@@ -43,7 +43,7 @@ void main() {
   test('should return a valid model from json', () {
     //arrange
     final Map<String, dynamic> jsonMap =
-        json.decode(readJson('dummy_data/Season_detail.json'));
+        json.decode(readJson('dummy_data/season_detail.json'));
     //act
     final result = SeasonDetailModel.fromJson(jsonMap);
 
