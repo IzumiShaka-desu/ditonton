@@ -22,7 +22,7 @@ final testMovie = Movie(
 
 final testMovieList = [testMovie];
 
-final testMovieDetail = MovieDetail(
+final testMovieDetail = const MovieDetail(
   adult: false,
   backdropPath: 'backdropPath',
   genres: [Genre(id: 1, name: 'Action')],

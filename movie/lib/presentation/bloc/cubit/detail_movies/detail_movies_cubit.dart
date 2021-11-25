@@ -72,6 +72,7 @@ class DetailMoviesCubit extends Cubit<DetailMoviesState> {
       result.fold(
         (fail) async => _message = fail.message,
         (result) async {
+          _message = watchlistRemoveSuccessMessage;
           if (state is LoadedWithRecommendationErrorDetailMoviesState) {
             final isAddedToWatchlist =
                 await _getWatchListStatus.execute(movie.id);
