@@ -77,6 +77,22 @@ void main() {
     expect(listViewFinder, findsOneWidget);
     expect(tvCardFinder, findsWidgets);
   });
+  testWidgets('Page should display Text when data is loaded but empty',
+      (WidgetTester tester) async {
+    const testData = LoadedWatchlistTvsState(
+      [],
+    );
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadWatchlistTvs())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
+
+    final textFinder = find.text("you don't have any watchlist yet");
+
+    await tester.pumpWidget(_makeTestableWidget(const WatchlistTvsPage()));
+
+    expect(textFinder, findsOneWidget);
+  });
 
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
