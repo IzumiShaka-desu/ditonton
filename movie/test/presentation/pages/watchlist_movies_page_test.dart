@@ -78,6 +78,22 @@ void main() {
     expect(movieCardFinder, findsWidgets);
   });
 
+  testWidgets('Page should display Text when data is loaded but empty',
+      (WidgetTester tester) async {
+    const testData = LoadedWatchlistMoviesState(
+      [],
+    );
+    when(() => mockCubit.state).thenAnswer((_) => testData);
+    when(() => mockCubit.loadWatchlistMovies())
+        .thenAnswer((invocation) async => invocation);
+    whenListen(mockCubit, Stream.fromIterable([testData]));
+
+    final textFinder = find.text("you don't have any watchlist yet");
+
+    await tester.pumpWidget(_makeTestableWidget(const WatchlistMoviesPage()));
+
+    expect(textFinder, findsOneWidget);
+  });
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
     const testData = ErrorWatchlistMoviesState('cannot connect');

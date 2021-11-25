@@ -47,6 +47,14 @@ class _BodyWidget extends StatelessWidget {
       );
     }
     if (state is LoadedWatchlistMoviesState) {
+      if (state.movies.isEmpty) {
+        return const Center(
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Text("you don't have any watchlist yet"),
+          ),
+        );
+      }
       return ListView.builder(
         itemBuilder: (context, index) {
           final movie = state.movies[index];
