@@ -72,6 +72,8 @@ class DetailTvCubit extends Cubit<DetailTvsState> {
       result.fold(
         (fail) async => _message = fail.message,
         (result) async {
+          _message = watchlistRemoveSuccessMessage;
+
           if (state is LoadedWithRecommendationErrorDetailTvsState) {
             final isAddedToWatchlist = await _getWatchListStatus.execute(tv.id);
 
