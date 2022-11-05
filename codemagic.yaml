@@ -17,6 +17,10 @@ workflows:
     scripts:
       - flutter packages pub get
       - flutter test about core home movie tv --coverage
+      - name: Build Android APK
+        working_directory: android
+        script: ./gradlew assembleRelease
+      
       # - flutter test about --coverage
       # - flutter test home --coverage
       # - flutter test core --coverage
@@ -26,3 +30,4 @@ workflows:
       # - flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/movie_test.dart  
     artifacts:
       - coverage/lcov.info
+      - app/build/outputs/**/**/*.apk
